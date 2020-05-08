@@ -6,7 +6,6 @@ E' un sistema per la gestione del processo di Consolidamento dei Bilanci realizz
 ## Descrizione
 Il sistema consente il consolidamento dei Bilanci dell’Ente capogruppo con partecipate, controllate ed enti strumentali dal caricamento dei dati di bilancio e delle partite infragruppo da file esterni (fogli elettronici strutturati). 
 
-
 ## Framework, tecnologie e linguaggi utilizzati
  - Oracle DataBase vers. 11 e superiori
  - Oracle Application Express vers. 4.0 e superiori
@@ -52,7 +51,16 @@ Funzione di generazione Bilancio Consolidamento
 Report Interattivi per analisi aggregate e di dettaglio
 
 **Reportistica Ufficiale:**
-Generazione Tabelle da allegare alla Nota Integrativa
+Generazione Tabelle da allagare alla Nota Integrativa
 Generazione file in formato xbrl per invio alla Banca Dati Amministrazioni Pubbliche (BDAP)
 Caratteristiche Funzionali
 Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice utilizzo di un browser (compatibile con tutti i più diffusi browser).
+
+## Documenti
+Di seguito i documenti che accompagnano il codice
+
+ 1. Manuale di Gestione dell'Applicazione
+ 2. Manuale Utente
+ 3. [Scripts SQL per la creazione degli oggetti di Data Base](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC%20scripts%20DB.sql)
+ 4. [File sorgente Apex dell'applicazione](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC%20Application.sql)
+ 5. [Dizionario dati DB](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/tree/master/SInC%20DB%20Documentation)

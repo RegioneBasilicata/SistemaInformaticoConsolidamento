@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>CARICA_INFRAGRUPPO</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="CARICA_INFRAGRUPPO.html">Details</a></div></div>
+<div class="tab"><div><a href="CARICA_INFRAGRUPPO_Grants.html">Grants</a></div></div>
+<div class="tab"><div><a href="CARICA_INFRAGRUPPO_References.html">References</a></div></div>
+<div class="tab"><div><a href="CARICA_INFRAGRUPPO_Dependencies.html">Dependencies</a></div></div>
+<div class="tab" id="current"><div><a href="CARICA_INFRAGRUPPO_Code.html">Code</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Code"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>TEXT</th>
+</tr>
+	<tr><td><pre>
+procedure carica_infragruppo(p_anno in number, p_ente in number) is
+--************************
+--****** ATTENZIONE ******
+-- per il momento va usata solo con p_ente = 1 (Regione) per caricare le infra regione
+-- ********************************
+
+	verifica_infra number := 0;
+
+begin
+
+    select count(*) into verifica_infra
+    from cons_infragruppo
+    where anno = p_anno
+    and id_ente = p_ente;
+
+    if verifica_infra = 0
+     then
+            insert into cons_infragruppo(anno,id_ente,id_infra,id_conto,importo_originale)
+               select p_anno, p_ente,a.id, p.id,nvl(sum(nvl(t.saldo,0)),0) importo
+            from gat2.vw_nb_mastrini_tp t
+            ,cons_anagrafica a
+            ,cons_ana_contabile c
+            ,cons_piacee p
+            where to_char(t.data_registrazione,'yyyy') = p_anno
+            and t.id_cred_deb = a.id_sic
+            and t.conto &lt;> 'ACIV1a'
+            and p.anno = p_anno
+            and p.codice_conto = t.conto
+            and p.ente_societa = 'E'
+            and c.id_ana = a.id
+            and c.anno = p_anno
+            and nvl(c.gap_sn,'N') = 'S'
+            group by p_anno,p_ente,a.id,p.id 
+            having nvl(sum(nvl(saldo,0)),0) > 0;  
+    commit;
+    end if;
+
+end;</pre>	</td></tr>
+</table></div>

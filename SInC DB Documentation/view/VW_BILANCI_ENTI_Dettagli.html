@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>VW_BILANCI_ENTI</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="VW_BILANCI_ENTI.html">Colonne</a></div></div>
+<div class="tab"><div><a href="VW_BILANCI_ENTI_Autorizzazioni.html">Autorizzazioni</a></div></div>
+<div class="tab"><div><a href="VW_BILANCI_ENTI_Dipendenze.html">Dipendenze</a></div></div>
+<div class="tab" id="current"><div><a href="VW_BILANCI_ENTI_Dettagli.html">Dettagli</a></div></div>
+<div class="tab"><div><a href="VW_BILANCI_ENTI_Trigger.html">Trigger</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Dettagli"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>Name</th>
+	<th>Value</th>
+</tr>
+	<tr>
+<td>CREATED</td>
+<td>2017-08-31</td>
+	</tr>
+	<tr>
+<td>LAST_DDL_TIME</td>
+<td>2017-09-25</td>
+	</tr>
+	<tr>
+<td>OWNER</td>
+<td>REGBAS_CONSOLIDATO</td>
+	</tr>
+	<tr>
+<td>VIEW_NAME</td>
+<td>VW_BILANCI_ENTI</td>
+	</tr>
+	<tr>
+<td>TEXT_LENGTH</td>
+<td>513</td>
+	</tr>
+	<tr>
+<td>TEXT</td>
+<td>select i.anno,i.id_ente,decode(substr(e.CODICE_CONTO,1,1),'A',1,'P',2,'C',3,99) tipo,e.id id_conto,e.CODICE_CONTO,e.descrizione,e.ordinamento_stampa,sum(nvl(i.IMPORTO,0)) importo,sum(nvl(i.IMPORTO1,0)) importo1
+from cons_piacee_importi i
+,cons_piacee e
+,cons_anagrafica a
+where e.anno = i.anno
+and e.id = i.CODICE_CONTO
+and e.ENTE_SOCIETA = 'E'
+and a.id = i.ID_ENTE
+and a.TIPO = 'E'
+group by i.anno,i.id_ente,decode(substr(e.CODICE_CONTO,1,1),'A',1,'P',2,99),e.id,e.CODICE_CONTO,e.descrizione,e.ordinamento_stampa</td>
+	</tr>
+	<tr>
+<td>TYPE_TEXT_LENGTH</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>TYPE_TEXT</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>OID_TEXT_LENGTH</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>OID_TEXT</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>VIEW_TYPE_OWNER</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>VIEW_TYPE</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>SUPERVIEW_NAME</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>EDITIONING_VIEW</td>
+<td>N</td>
+	</tr>
+	<tr>
+<td>READ_ONLY</td>
+<td>N</td>
+	</tr>
+</table></div>

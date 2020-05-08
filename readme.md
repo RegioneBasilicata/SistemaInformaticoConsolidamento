@@ -52,7 +52,7 @@ Funzione di generazione Bilancio Consolidamento
 Report Interattivi per analisi aggregate e di dettaglio
 
 **Reportistica Ufficiale:**
-Generazione Tabelle da allagare alla Nota Integrativa
+Generazione Tabelle da allegare alla Nota Integrativa
 Generazione file in formato xbrl per invio alla Banca Dati Amministrazioni Pubbliche (BDAP)
 Caratteristiche Funzionali
 Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice utilizzo di un browser (compatibile con tutti i più diffusi browser).

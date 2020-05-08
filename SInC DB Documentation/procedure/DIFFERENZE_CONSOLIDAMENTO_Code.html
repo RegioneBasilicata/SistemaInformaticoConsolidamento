@@ -1,0 +1,208 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>DIFFERENZE_CONSOLIDAMENTO</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="DIFFERENZE_CONSOLIDAMENTO.html">Details</a></div></div>
+<div class="tab"><div><a href="DIFFERENZE_CONSOLIDAMENTO_Grants.html">Grants</a></div></div>
+<div class="tab"><div><a href="DIFFERENZE_CONSOLIDAMENTO_References.html">References</a></div></div>
+<div class="tab"><div><a href="DIFFERENZE_CONSOLIDAMENTO_Dependencies.html">Dependencies</a></div></div>
+<div class="tab" id="current"><div><a href="DIFFERENZE_CONSOLIDAMENTO_Code.html">Code</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Code"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>TEXT</th>
+</tr>
+	<tr><td><pre>
+procedure differenze_consolidamento (p_anno in number, p_id_conto number,p_id_ente number) is 
+
+--p_id_conto rappresenta l'ID del conto utilizzato per compensare le differenze di consolidamento (es. AVVIAMENTO)
+	
+	ord_riga number := 0;
+    conto_diff VARCHAR2(100);
+
+    verifica_conto_diff number := 0;
+
+    codice_ABIV1a number := 0; -- imprese controllate
+    codice_ABIV1b number := 0; -- imprese partecipate
+    codice_utilizzato number := 0; -- contiene il valore del codice conto ABIV1a se trattasi di imprese controllate o di ABIVab se imprese partecipate
+    desc_cod_utilizzato varchar2(100); -- contiene la descrizione del codice conto ABIV1a se trattasi di imprese controllate o di ABIVab se imprese partecipate
+
+    denominazione varchar2(200);
+    imp_partecipazione number := 0;
+    perc_partecipazione number := 0;
+    diff_consolidamento number := 0;
+
+    totale_rettifica number := 0;
+    
+    importo_rettifica_pn number := 0;
+    id_conto_pn number := 0;
+
+
+	-- cursore quote di partecipazione
+    -- elimino il cursore in quanto l'elisione del PAtrimonio Netto la facciamo complessivamente sul conto PAIIa Risultato economico esercizi precedenti
+	/*
+    cursor quote is
+	select b.id_conto,b.CODICE_CONTO,b.DESCRIZIONE desc_conto,b.importo
+	from cons_ana_contabile c
+	,vw_bilanci_enti_nettizzati b
+	where c.ANNO = p_anno
+	and nvl(c.QUOTA_PARTECIPAZIONE,0) > 0
+	and nvl(c.PERC_PARTECIPAZIONE,0) > 0
+	and c.ID_ANA= p_id_ente
+	and b.ID_ENTE =c.ID_ANA
+	and b.ANNO = p_anno
+	and b.CODICE_CONTO in ('PAI','PAIIa','PAIIb','PAIIc','PAIId','PAIIe')
+    and nvl(b.importo,0) &lt;> 0
+	order by 2,3;
+ */
+begin
+
+  begin
+	select d.DENOMINAZIONE,d.QUOTA_PARTECIP,d.PERC_PARTECIP,d.diff_consolidamento
+	into denominazione,imp_partecipazione,perc_partecipazione,diff_consolidamento
+	from cons_diff_consolidamento d
+	where d.ANNO = p_anno
+	and d.ID_ANA = p_id_ente;
+	exception when no_data_found then imp_partecipazione := 0; perc_partecipazione := 0; diff_consolidamento := 0;
+  end;
+
+
+    select nvl(sum(nvl(importo,0)),0) into verifica_conto_diff
+    from cons_rettifiche
+    where anno = p_anno
+    and id_ente = p_id_ente
+    and upper(substr(note,1,2)) = 'DC';
+
+   begin
+    select id into codice_ABIV1a
+    from cons_piacee
+    where anno = p_anno
+    and codice_conto = 'ABIV1a';
+    exception when no_data_found then codice_ABIV1a := 0;
+   end;
+
+   begin
+    select id into codice_ABIV1b
+    from cons_piacee
+    where anno = p_anno
+    and codice_conto = 'ABIV1b';
+    exception when no_data_found then codice_ABIV1b := 0;
+   end;
+	-- inserisco le rettifiche di dettaglio per l'Ente/azienda p_id_ente
+
+	if imp_partecipazione &lt;> 0 and verifica_conto_diff = 0
+	then	
+		if nvl(perc_partecipazione,0) > 50
+			then codice_utilizzato := codice_ABIV1a;
+				 desc_cod_utilizzato := 'ABIV1a - Imprese controllate';
+			else codice_utilizzato := codice_ABIV1b;
+				 desc_cod_utilizzato := 'ABIV1b - Imprese partecipate';
+		end if;
+
+		select seq_rett.nextval into ord_riga
+	 	from dual;
+
+		insert into cons_rettifiche(ANNO,ID_ENTE,CODICE_CONTO,PROGRESSIVO,FLAG_BILANCIO,IMPORTO,NOTE)
+	 		values
+	 		(p_anno
+	 			,p_id_ente
+	 			,codice_utilizzato
+	 			,ord_riga
+	 			,'C'
+	 			,- imp_partecipazione
+	 			,'DC - Rettifica per elisione PARTECIPAZIONE di '||DENOMINAZIONE||' su '||desc_cod_utilizzato
+	 		);
+
+ select sum(importo)  into importo_rettifica_pn
+  FROM
+  (
+    select sum(b.importo) importo --into importo_rettifica_pn
+	from cons_ana_contabile c
+	,vw_bilanci_enti_nettizzati b
+	where c.ANNO = p_anno
+	and nvl(c.QUOTA_PARTECIPAZIONE,0) > 0
+	and nvl(c.PERC_PARTECIPAZIONE,0) > 0
+	and c.ID_ANA= p_id_ente
+	and b.ID_ENTE =c.ID_ANA
+	and b.ANNO = p_anno
+	and b.CODICE_CONTO in ('PAI','PAIIa','PAIIb','PAIIc','PAIId','PAIIe')
+    and nvl(b.importo,0) &lt;> 0
+    UNION
+    select totale_conto_netto(c.anno,b.CODICE_CONTO,p_id_ente) importo --into importo_rettifica_pn
+	from cons_ana_contabile c
+	,vw_bilanci_enti_nettizzati b
+	where c.ANNO = p_anno
+	and nvl(c.QUOTA_PARTECIPAZIONE,0) > 0
+	and nvl(c.PERC_PARTECIPAZIONE,0) > 0
+	and c.ID_ANA= p_id_ente
+	and b.ID_ENTE =c.ID_ANA
+	and b.ANNO = p_anno
+	and b.CODICE_CONTO = 'PAIII'
+    );
+    
+    begin
+    select p.id into id_conto_pn
+    from cons_piacee p
+    where p.anno = p_anno
+    and p.codice_conto = 'PAIIa';
+    exception when no_data_found then id_conto_pn := 0;
+    end;
+    
+     	select seq_rett.nextval into ord_riga
+	 	from dual;
+
+	 	insert into cons_rettifiche(ANNO,ID_ENTE,CODICE_CONTO,PROGRESSIVO,FLAG_BILANCIO,IMPORTO,NOTE)
+	 		values
+	 		(p_anno
+	 			,p_id_ente
+	 			,id_conto_pn
+	 			,ord_riga
+	 			,'C'
+	 			,- round((importo_rettifica_pn*perc_partecipazione/100),2)
+	 			,'DC - Rettifica per differenza di CONSOLIDAMENTO di '||DENOMINAZIONE||' su PAIIa - da risultato economico di esercizi precedenti'
+	 		);
+	 totale_rettifica := totale_rettifica + round((importo_rettifica_pn*perc_partecipazione/100),2);
+	
+	 commit;
+
+if diff_consolidamento &lt;> 0 and p_id_conto &lt;> 0
+then
+  begin
+    select codice_conto||' - '||descrizione into conto_diff
+    from cons_piacee
+    where anno = p_anno
+    and id = p_id_conto;
+  exception when no_data_found then conto_diff := '-';
+  end;
+  
+	-- inserisco la rettifica per compensare la differenza di consolidamento rilevata
+	select seq_rett.nextval into ord_riga
+	from dual; 
+
+		insert into cons_rettifiche(ANNO,ID_ENTE,CODICE_CONTO,PROGRESSIVO,FLAG_BILANCIO,IMPORTO,NOTE)
+	 		values
+	 		(p_anno
+	 			,p_id_ente
+	 			,p_id_conto
+	 			,ord_riga
+	 			,'C'
+	 			,abs(diff_consolidamento)
+	 			,'DC - Rettifica per compensazione differenza di CONSOLIDAMENTO di '||DENOMINAZIONE||' su '||conto_diff
+	 		);
+
+	 	commit;
+ end if;
+ 
+      update cons_ana_contabile a set a.flag_dc = 'S' where a.anno = p_anno and a.id_ana = p_id_ente;
+      commit;
+
+	end if;
+
+end;</pre>	</td></tr>
+</table></div>

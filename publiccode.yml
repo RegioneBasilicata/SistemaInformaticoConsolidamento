@@ -1,0 +1,87 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - accounting
+  - financial-reporting
+  - office
+description:
+  lt:
+    features:
+      - Definizione e gestione Gruppo Amministrazione Pubblica (GAP):**
+      - Gestione anagrafiche
+      - Gestione dettagli partecipazione/controllo (importo, %, ecc.).
+      - Importazione dati contabili
+      - Import bilanci
+      - Import partite infragruppo 
+      - Gestione Infragruppo
+      - Immissione manuale partite infragruppo
+      - Gestione rettifiche partite Infragruppo
+      - Gestione Rettifiche di coerenza e di consolidamento
+      - Inserimento e gestione rettifiche di coerenza
+      - Rilevamento automatico differenze di consolidamento e inserimento automatico rettifiche di consolidamento
+      - Verifica quadrature rettifiche
+      - Funzione di generazione Bilancio Aggregato (pre Consolidamento)
+      - Funzione di generazione Bilancio Consolidamento
+      - Report Interattivi per analisi aggregate e di dettaglio
+      - Reportistica ufficiale
+      - Generazione Tabelle da allagare alla Nota Integrativa
+      - Generazione file in formato xbrl per invio alla Banca Dati Amministrazioni Pubbliche (BDAP)
+      - Caratteristiche Funzionali
+      - Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice utilizzo di un browser (compatibile con tutti i più diffusi browser)
+    genericName: SInC
+    longDescription: >
+      Il sistema consente il consolidamento dei Bilanci 
+      dell’Ente capogruppo con partecipate, 
+      controllate ed enti strumentali dal caricamento 
+      dei dati di bilancio e delle partite infragruppo 
+      da file esterni (fogli elettronici strutturati)
+    shortDescription: >-
+     E' un sistema per la gestione del processo 
+     di Consolidamento dei Bilanci 
+     realizzato dalla Cooperativa EDP La Traccia per la Regione Basilicata.
+developmentStatus: stable
+intendedAudience:
+  scope:
+    - government
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: true
+  riuso:
+    codiceIPA: r_basili
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Regione Basilicata
+  repoOwner: Regione Basilicata
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: false
+maintenance:
+  contacts:
+    - email: fferrante@latraccia.it
+      name: Francesco Ferrante
+  contractors:
+    - name: Cooperativa EDP La Traccia
+      until: '2017-01-01'
+  type: contract
+name: Sistema Informatico di Consolidamento 
+platforms:
+  - web
+releaseDate: '2017-01-01'
+softwareType: standalone/web
+softwareVersion: '1.0'
+url: 'https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento'
+usedBy:
+  - Regione Basilicata

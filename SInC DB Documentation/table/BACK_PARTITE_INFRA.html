@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>BACK_PARTITE_INFRA</h2>
+<div class="tabs clearfix">
+
+<div class="tab" id="current"><div><a href="BACK_PARTITE_INFRA.html">Colonne</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Vincoli.html">Vincoli</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Autorizzazioni.html">Autorizzazioni</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Statistiche.html">Statistiche</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Trigger.html">Trigger</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Flashback.html">Flashback</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Dipendenze.html">Dipendenze</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Dettagli.html">Dettagli</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Partizioni.html">Partizioni</a></div></div>
+<div class="tab"><div><a href="BACK_PARTITE_INFRA_Indici.html">Indici</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Colonne"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>COLUMN_NAME</th>
+	<th>DATA_TYPE</th>
+	<th>NULLABLE</th>
+	<th>DATA_DEFAULT</th>
+	<th>COLUMN_ID</th>
+	<th>COMMENTS</th>
+</tr>
+	<tr>
+<td>ANNO</td>
+<td>NUMBER</td>
+<td>No</td>
+<td>null</td>
+<td>1</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>ID_ENTE</td>
+<td>NUMBER</td>
+<td>No</td>
+<td>null</td>
+<td>2</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>ID_INFRA</td>
+<td>NUMBER</td>
+<td>No</td>
+<td>null</td>
+<td>3</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>CREDITI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>4</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>DEBITI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>5</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>RICAVI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>6</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>COSTI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>7</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>INTERESSI_ROYAL</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>8</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>CONTRIBUTI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>9</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>INTERESSI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>10</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>ACQ_CESPITI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>11</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>VEN_CESPITI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>12</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>CONC_CRED_PREST</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>13</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>UTILE_PERD_INFRA</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>14</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>DIVIDENDI_DISAVANZI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>15</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>TRIBUTI</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>16</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>ID_CONTO</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>17</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>IMPORTO_ORIGINALE</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>18</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>IMPORTO_RETTIFICATO</td>
+<td>NUMBER</td>
+<td>Yes</td>
+<td>null</td>
+<td>19</td>
+<td>null</td>
+	</tr>
+	<tr>
+<td>NOTE</td>
+<td>VARCHAR2(2000 BYTE)</td>
+<td>Yes</td>
+<td>null</td>
+<td>20</td>
+<td>null</td>
+	</tr>
+</table></div>

@@ -1,0 +1,616 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>TOTALE_CONTO_VA</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="TOTALE_CONTO_VA.html">Details</a></div></div>
+<div class="tab"><div><a href="TOTALE_CONTO_VA_Grants.html">Grants</a></div></div>
+<div class="tab"><div><a href="TOTALE_CONTO_VA_References.html">References</a></div></div>
+<div class="tab"><div><a href="TOTALE_CONTO_VA_Dependencies.html">Dependencies</a></div></div>
+<div class="tab" id="current"><div><a href="TOTALE_CONTO_VA_Code.html">Code</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Code"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>TEXT</th>
+</tr>
+	<tr><td><pre>
+function totale_conto_va (p_anno in number, p_codice_conto in varchar2, p_ente in number) return number is
+
+totale number := 0;
+p_EA number := 0;
+p_EB number := 0;
+p_EC number := 0;
+p_ED number := 0;
+p_EE number := 0;
+
+p_EF26 number := 0;
+
+p_risultato_esercizio number := 0;
+
+begin
+
+    -- calcolo risultato esercizio
+    select nvl(sum(nvl(importo,0)),0) into p_EA
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EA1',
+											'EA2',
+											'EA3a',
+											'EA3b',
+											'EA3c',
+											'EA4a',
+											'EA4b',
+											'EA4c',
+											'EA5',
+											'EA6',
+											'EA7',
+											'EA8')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(importo,0)),0) into p_EB  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EB9',
+											'EB10',
+											'EB11',
+											'EB12a',
+											'EB12b',
+											'EB12c',
+											'EB13',
+											'EB14a',
+											'EB14b',
+											'EB14c',
+											'EB14d',
+											'EB15',
+											'EB16',
+											'EB17',
+											'EB18')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EC21',-n.importo,n.importo),0)),0) into p_EC
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EC19a','EC19b','EC19c','EC20','EC21a','EC21b')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+
+		select nvl(sum(nvl(decode(codice_conto,'ED23',-importo,importo),0)),0) into p_ED 
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ED22','ED23')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EE25',-n.importo,n.importo),0)),0) into p_EE
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EE24a','EE24b','EE24c','EE24d','EE24e','EE25a','EE25b','EE25c','EE25d')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+
+	-- calcolo EF26
+   		select nvl(sum(nvl(importo,0)),0) into p_EF26
+        from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto = 'EF26'
+						  and id_ente = p_ente;
+
+	p_risultato_esercizio := p_EA - p_EB + p_EC + p_ED + p_EE - p_EF26;
+    -- fine calcolo risultato esercizio
+
+	-- calcolo totale AAT
+if p_codice_conto = 'AAT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto = 'AA'
+						  and id_ente = p_ente;
+	return totale;
+	-- fine AAT
+ -- calcolo totale ABIT
+elsif p_codice_conto = 'ABIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ABI1','ABI2','ABI3','ABI4','ABI5','ABI6','ABI9')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ABIT
+-- calcolo totale ABIIIT
+elsif p_codice_conto = 'ABIIIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ABII1.1','ABII1.2','ABII1.3','ABII1.9','ABIII2.1','ABIII2.2','ABIII2.3',
+											'ABIII2.4',
+											'ABIII2.5',
+											'ABIII2.6',
+											'ABIII2.7',
+											'ABIII2.8',
+											'ABIII2.9',
+											'ABIII2.99',
+											'ABIII3')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ABIIIT
+-- calcolo totale ABIVT
+elsif p_codice_conto = 'ABIVT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ABIV1a',
+											'ABIV1b',
+											'ABIV1c',
+											'ABIV2a',
+											'ABIV2b',
+											'ABIV2c',
+											'ABIV2d',
+											'ABIV3')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ABIVT
+-- insert totale ABT
+elsif p_codice_conto = 'ABT'
+	then
+		select nvl(sum(nvl(n.importo,0)),0) into totale  
+		 from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) = 'AB'
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and p.aggregato = 'N';
+	return totale;
+	-- fine ABT
+-- calcolo totale ACIT
+elsif p_codice_conto = 'ACIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto = 'ACI'
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ACIT
+	-- calcolo totale ACIIT
+elsif p_codice_conto = 'ACIIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ACII1a','ACII1b','ACII1c','ACII2a','ACII2b','ACII2c','ACII2d','ACII3','ACII4a','ACII4b','ACII4c')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ACIIT
+	-- calcolo totale ACIIIT
+elsif p_codice_conto = 'ACIIIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ACIII1','ACIII2')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ACIIIT
+-- calcolo totale ACIVT
+elsif p_codice_conto = 'ACIVT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ACIV1a',
+											'ACIV1b',
+											'ACIV2',
+											'ACIV3',
+											'ACIV4')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ACIVT
+-- insert totale ACT
+elsif p_codice_conto = 'ACT'
+	then
+		select nvl(sum(nvl(n.importo,0)),0) into totale  
+		 from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) = 'AC'--n.codice_conto in ('ACII1a','ACII1b','ACII1c','ACII2a','ACII2b','ACII2c','ACII2d','ACII3','ACII4a','ACII4b','ACII4c')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and p.aggregato = 'N';
+	return totale;
+	-- fine ACT
+-- calcolo totale ADT
+elsif p_codice_conto = 'ADT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('AD1','AD2')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ADT
+ -- insert totale AT
+ elsif p_codice_conto = 'AT'
+	then
+		select nvl(sum(nvl(n.importo,0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) in ('AA','AB','AC','AD')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+	return totale;
+	-- fine AT
+    -- calcolo totale PAIIIT
+elsif p_codice_conto = 'PAIIIT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PAI',
+											'PAIIa',
+											'PAIIb',
+											'PAIIc')
+                          and id_ente = p_ente;
+
+    totale := totale + nvl(p_risultato_esercizio,0);
+	return totale;
+
+-- calcolo totale PAIIId
+elsif p_codice_conto = 'PAIIId'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PAIIIb',
+										    'PAIIIc') 
+                                and id_ente = p_ente;
+  --  totale := totale + nvl(p_risultato_esercizio,0);
+	return totale;
+
+-- calcolo totale PAT
+elsif p_codice_conto = 'PAT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PAI',
+											'PAIIa',
+											'PAIIb',
+											'PAIIc',
+                                            'PAIId',
+                                            'PAIIe')
+                          and id_ente = p_ente;
+    totale := totale + nvl(p_risultato_esercizio,0);
+	return totale;
+	-- fine PAT
+-- calcolo totale PBT
+elsif p_codice_conto = 'PBT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PB1','PB2','PB3','PB4')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine PBT
+-- calcolo totale PCT
+elsif p_codice_conto = 'PCT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto = 'PC'
+						  and id_ente = p_ente;
+	return totale;
+	-- fine PCT
+-- calcolo totale PDT
+elsif p_codice_conto = 'PDT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PD1a',
+											'PD1b',
+											'PD1c',
+											'PD1d',
+											'PD2',
+											'PD3',
+											'PD4a',
+											'PD4b',
+											'PD4c',
+											'PD4d',
+											'PD4e',
+											'PD5a',
+											'PD5b',
+											'PD5c',
+											'PD5d')
+						  and id_ente = p_ente;
+	return totale;
+   -- fine PDT
+-- calcolo totale PET
+elsif p_codice_conto = 'PET'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('PEI',
+											'PEII1a',
+											'PEII1b',
+											'PEII2',
+											'PEII3')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine PET
+-- calcolo totale PT
+elsif p_codice_conto = 'PT'
+	then
+		select nvl(sum(nvl(n.importo,0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) in ('PA','PB','PC','PD','PE')
+                          and n.codice_conto not in ('PAIIIa','PAIIIb','PAIIIc','PAIVa','PAIVb') --richiesta Manuela Puglia
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N'
+                          and n.id_ente = p_ente;
+        totale := totale + nvl(p_risultato_esercizio,0);
+			return totale;
+	-- fine PT
+
+    -- calcolo totale CT
+elsif p_codice_conto = 'CT'
+	then
+		select nvl(sum(nvl(n.importo,0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) = 'C0'
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+			return totale;
+	-- fine PT
+
+--*************  calcoli CE ****************
+-- calcolo totale EAT
+elsif p_codice_conto = 'EAT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EA1',
+											'EA2',
+											'EA3a',
+											'EA3b',
+											'EA3c',
+											'EA4a',
+											'EA4b',
+											'EA4c',
+											'EA5',
+											'EA6',
+											'EA7',
+											'EA8')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine EAT
+-- calcolo totale EBT
+		 from vw_bilanci_enti_va
+elsif p_codice_conto = 'EBT'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+						  where anno = p_anno
+						  and codice_conto in ('EB9',
+											'EB10',
+											'EB11',
+											'EB12a',
+											'EB12b',
+											'EB12c',
+											'EB13',
+											'EB14a',
+											'EB14b',
+											'EB14c',
+											'EB14d',
+											'EB15',
+											'EB16',
+											'EB17',
+											'EB18')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine EBT
+
+-- calcolo totale EAB
+elsif p_codice_conto = 'EAB'
+	then
+	 select nvl(sum(nvl(decode(substr(n.codice_conto,1,2),'EB',-n.importo,n.importo),0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and substr(n.codice_conto,1,2) in ('EA','EB')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+	return totale;
+	-- fine EAB
+
+-- calcolo totale ECT1
+elsif p_codice_conto = 'ECT1'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EC19a','EC19b','EC19c','EC20')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine ECT1
+-- calcolo totale ECT2
+elsif p_codice_conto = 'ECT2'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EC21a','EC21b')
+						  and id_ente = p_ente;
+	return totale;
+
+	-- fine ECT2
+
+-- insert totale ECT
+elsif p_codice_conto = 'ECT'
+	then
+	 select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EC21',-n.importo,n.importo),0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EC19a','EC19b','EC19c','EC20','EC21a','EC21b')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+	return totale;
+	-- fine ECT
+-- calcolo totale EDT
+elsif p_codice_conto = 'EDT'
+	then
+		select nvl(sum(nvl(decode(codice_conto,'ED23',-importo,importo),0)),0) into totale 
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('ED22','ED23')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine EDT
+-- calcolo totale EET1
+elsif p_codice_conto = 'EET1'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EE24a','EE24b','EE24c','EE24d','EE24e')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine EET1
+-- calcolo totale EET2
+elsif p_codice_conto = 'EET2'
+	then
+		select nvl(sum(nvl(importo,0)),0) into totale  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EE25a','EE25b','EE25c','EE25d')
+						  and id_ente = p_ente;
+	return totale;
+	-- fine EET2
+-- insert totale EET
+elsif p_codice_conto = 'EET'
+	then
+	 select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EE25',-n.importo,n.importo),0)),0) into totale
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EE24a','EE24b','EE24c','EE24d','EE24e','EE25a','EE25b','EE25c','EE25d')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+	return totale;
+	-- fine EET
+
+-- calcolo totale RPI
+elsif p_codice_conto = 'RPI'
+	then 
+	select nvl(sum(nvl(importo,0)),0) into p_EA
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EA1',
+											'EA2',
+											'EA3a',
+											'EA3b',
+											'EA3c',
+											'EA4a',
+											'EA4b',
+											'EA4c',
+											'EA5',
+											'EA6',
+											'EA7',
+											'EA8')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(importo,0)),0) into p_EB  
+		 from vw_bilanci_enti_va
+						  where anno = p_anno
+						  and codice_conto in ('EB9',
+											'EB10',
+											'EB11',
+											'EB12a',
+											'EB12b',
+											'EB12c',
+											'EB13',
+											'EB14a',
+											'EB14b',
+											'EB14c',
+											'EB14d',
+											'EB15',
+											'EB16',
+											'EB17',
+											'EB18')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EC21',-n.importo,n.importo),0)),0) into p_EC
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EC19a','EC19b','EC19c','EC20','EC21a','EC21b')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+						  where anno = p_anno
+
+		select nvl(sum(nvl(decode(codice_conto,'ED23',-importo,importo),0)),0) into p_ED 
+		 from vw_bilanci_enti_va
+						  and codice_conto in ('ED22','ED23')
+						  and id_ente = p_ente;
+
+		select nvl(sum(nvl(decode(substr(n.codice_conto,1,4),'EC25',-n.importo,n.importo),0)),0) into p_EE
+	  from vw_bilanci_enti_va n
+		 ,cons_piacee p
+						  where n.anno = p_anno
+						  and n.codice_conto in ('EE24a','EE24b','EE24c','EE24d','EE24e','EE25a','EE25b','EE25c','EE25d')
+						  and n.id_ente = p_ente
+						  and p.anno = n.anno
+						  and p.id = n.id_conto
+						  and nvl(p.aggregato,'X') = 'N';
+
+	totale := p_EA - p_EB + p_EC + p_ED + p_EE;
+	return totale;
+	-- fine RPI
+-- calcolo totale EG27
+elsif (p_codice_conto = 'EG27' OR p_codice_conto = 'PAIII')
+	then 
+	totale := nvl(p_risultato_esercizio,0);
+	return totale;
+	-- fine EG27
+	end if;
+ return(0);
+	END;</pre>	</td></tr>
+</table></div>

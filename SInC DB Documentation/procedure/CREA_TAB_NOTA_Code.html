@@ -1,0 +1,442 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252" />
+<script src="../dbdoc.js" type="text/javascript"></script>
+<link href="../dbdoc.css" type="text/css" rel="stylesheet">
+</head>
+<body class="object">
+<div id="header"><h2>CREA_TAB_NOTA</h2>
+<div class="tabs clearfix">
+
+<div class="tab"><div><a href="CREA_TAB_NOTA.html">Details</a></div></div>
+<div class="tab"><div><a href="CREA_TAB_NOTA_Grants.html">Grants</a></div></div>
+<div class="tab"><div><a href="CREA_TAB_NOTA_References.html">References</a></div></div>
+<div class="tab"><div><a href="CREA_TAB_NOTA_Dependencies.html">Dependencies</a></div></div>
+<div class="tab" id="current"><div><a href="CREA_TAB_NOTA_Code.html">Code</a></div></div>
+</div></div><br/>
+<div class="tab-panes">
+<div id="Code"> <table cellpadding="0" cellspacing="0" cellspacing="0" summary=""><tr>
+	<th>TEXT</th>
+</tr>
+	<tr><td><pre>
+procedure crea_tab_nota (p_anno number) is
+
+	verifica_totale number := 0;
+
+	begin
+
+	-- tabelle dettagli
+	--EA
+
+	select nvl(sum(nvl(x.importo,0)),0) into verifica_totale
+	from vw_bilancio_consolidato x 
+	where x.anno = p_anno 
+	and x.CODICE_CONTO = 'EAT';
+
+	if verifica_totale > 0
+	then
+	delete nota_tab_dettagli where anno = p_anno and tipo = 'EA';
+	commit;
+
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select 
+	c.anno
+	,'EA'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/verifica_totale,2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in ('EA1','EA2','EA3','EA4','EA5','EA6','EA7','EA8','EAT')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by p.ORDINAMENTO_STAMPA;
+	commit;
+	end if;
+
+	--EB
+	select nvl(sum(nvl(x.importo,0)),0) into verifica_totale
+	from vw_bilancio_consolidato x 
+	where x.anno = p_anno 
+	and x.CODICE_CONTO = 'EBT';
+
+	if verifica_totale > 0
+	then
+	delete nota_tab_dettagli where anno = p_anno and tipo = 'EB';
+	commit;
+
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select c.anno
+	,'EB'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/verifica_totale,2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in ('EB9',
+	'EB10',
+	'EB11',
+	'EB12',
+	'EB13',
+	'EB14',
+	'EB15',
+	'EB16',
+	'EB17',
+	'EB18',
+	'EBT')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by p.ORDINAMENTO_STAMPA;
+	commit;
+	end if;
+
+	--EC
+	select nvl(sum(nvl(x.importo,0)),0) into verifica_totale
+	from vw_bilancio_consolidato x 
+	where x.anno = p_anno 
+	and x.CODICE_CONTO = 'ECT';
+
+	if verifica_totale &lt;> 0
+	then
+	delete nota_tab_dettagli where anno = p_anno and tipo = 'EC';
+	commit;
+
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select c.anno
+	,'EC'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'ECT1'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in ('EC19',
+	'EC20',
+	'ECT1')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	UNION
+	select c.anno
+	,'EC'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'ECT2'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in ('EC21a',
+	'EC21',
+	'ECT2')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	UNION
+	select c.anno
+	,'EC'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,null percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto = 'ECT'
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by 7;
+	end if;
+    commit;
+
+	--ED
+	select nvl(sum(nvl(x.importo,0)),0) into verifica_totale
+	from vw_bilancio_consolidato x 
+	where x.anno = p_anno 
+	and x.CODICE_CONTO = 'EDT';
+
+	if verifica_totale &lt;> 0
+	then
+    delete nota_tab_dettagli where anno = p_anno and tipo = 'ED';
+	commit;
+    
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select c.anno
+	,'ED'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/verifica_totale,2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in ('ED22',
+	'ED23',
+	'EDT')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by p.ORDINAMENTO_STAMPA;
+    end if;
+    commit;
+
+	--EE
+	select nvl(sum(nvl(x.importo,0)),0) into verifica_totale
+	from vw_bilancio_consolidato x 
+	where x.anno = p_anno 
+	and x.CODICE_CONTO = 'EET';
+
+	if verifica_totale &lt;> 0
+	then
+	delete nota_tab_dettagli where anno = p_anno and tipo = 'EE';
+	commit;
+
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select c.anno
+	,'EE'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'EET1'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in (
+	'EE24a',
+	'EE24b',
+	'EE24c',
+	'EE24d',
+	'EE24e')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	UNION
+	select c.anno
+	,'EE'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'EET2'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in (
+	'EE25a',
+	'EE25b',
+	'EE25c',
+	'EE25d')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	UNION
+	select c.anno
+	,'EE'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,null percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto = 'EET'
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by 7;
+	end if;
+    commit;
+
+	--SP
+	delete nota_tab_dettagli where anno = p_anno and tipo = 'SP';
+	commit;
+
+	insert into nota_tab_dettagli(
+	ANNO
+	,TIPO
+	,CODICE
+	,DESCRIZIONE
+	,IMPORTO
+	,PERCENTUALE
+	,ORDINAMENTO)
+	select c.anno
+	,'SP'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'AT'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in (
+	'AAT',
+    'ABIT',
+    'ABIIIT',
+    'ABIVT',
+    'ABT',
+    'ACIT',
+    'ACIIT',
+    'ACIIIT',
+    'ACIVT',
+    'ACT',
+    'ADT',
+    'AT')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	UNION
+	select c.anno
+	,'SP'
+	,c.codice_conto
+	,c.descrizione
+	,nvl(c.importo,0) importo
+	,round(nvl(c.importo,0)*100/(select x.importo from vw_bilancio_consolidato x where x.anno = c.anno and x.CODICE_CONTO = 'PT'),2) percentuale
+	,p.ORDINAMENTO_STAMPA
+	from vw_bilancio_consolidato c
+	,cons_piacee p
+	where c.anno = p_anno
+	and c.codice_conto in (
+	'PAT',
+    'PBT',
+    'PCT',
+    'PDT',
+    'PET',
+    'PT')
+	and p.anno = c.anno
+	and p.CODICE_CONTO = c.CODICE_CONTO
+	and p.ENTE_SOCIETA = 'E'
+	order by 7;
+	commit;
+    
+-- **** popolo la NOTE_TAB_AGGREGATI ******
+ delete nota_tab_aggregati where anno = p_anno;
+ commit;
+ 
+ -- inserisco dati Economici
+ insert into nota_tab_aggregati(ANNO, TIPO, CODICE, DESCRIZIONE, IMP_CONTROLLANTE, IMP_CONSOLIDATO, IMP_DIFFERENZA, ORDINAMENTO)
+ select p.anno anno
+,'E' tipo
+,p.codice_conto 
+,decode(replace(upper(p.descrizione),'TOTALE ')
+,'(E) (E20-E21)','PROVENTI E ONERI STRAORDINARI (E)',replace(upper(p.descrizione),'TOTALE ')) descrizione
+,r.IMPORTO imp_controllante
+,c.importo imp_consolidato
+,(c.IMPORTO - r.importo) imp_differenza
+,p.ORDINAMENTO_STAMPA ordinamento
+from
+cons_piacee p
+,cons_bil_consolidato c
+,vw_bilanci_enti_nett_tot r -- vw_bilanci_enti_rett_tot r
+where p.anno = p_anno
+and p.codice_conto in ('EAT',
+'EBT',
+'EAB',
+'ECT',
+'EDT',
+'EET',
+'EF26',
+'EG27')
+and r.anno = p.anno
+and r.codice_conto = p.codice_conto
+and r.id_ente = 1
+and c.anno = p.anno
+and c.codice_conto = p.codice_conto
+order by p.ORDINAMENTO_STAMPA;
+
+commit;
+
+-- inserisco dati patrimoniali
+insert into nota_tab_aggregati(ANNO, TIPO, CODICE, DESCRIZIONE, IMP_CONTROLLANTE, IMP_CONSOLIDATO, IMP_DIFFERENZA, ORDINAMENTO)
+select p.anno anno
+,'P' tipo
+,p.codice_conto 
+,upper(p.descrizione) descrizione
+,r.IMPORTO imp_controllante
+,c.importo imp_consolidato
+,(c.IMPORTO - r.importo) imp_differenza
+,p.ORDINAMENTO_STAMPA ordinamento
+from
+cons_piacee p
+,cons_bil_consolidato c
+,vw_bilanci_enti_nett_tot r --vw_bilanci_enti_rett_tot r
+where p.anno = p_anno
+and p.codice_conto in ('AAT',
+'ABIT',
+'ABIIIT',
+'ABIVT',
+'ABT',
+'ACIT',
+'ACIIT',
+'ACIIIT',
+'ACIVT',
+'ACT',
+'ADT',
+'AT',
+'PAT',
+'PBT',
+'PCT',
+'PDT',
+'PET',
+'PT')
+and r.anno = p.anno
+and r.codice_conto = p.codice_conto
+and r.id_ente = 1
+and c.anno = p.anno
+and c.codice_conto = p.codice_conto
+order by p.ORDINAMENTO_STAMPA;
+
+
+End;</pre>	</td></tr>
+</table></div>

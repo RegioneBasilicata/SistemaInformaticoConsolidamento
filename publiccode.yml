@@ -8,7 +8,7 @@ categories:
   - financial-reporting
   - office
 description:
-  lt:
+  it:
     features:
       - Definizione e gestione Gruppo Amministrazione Pubblica (GAP):**
       - Gestione anagrafiche
@@ -46,6 +46,17 @@ description:
       - documentazione
       Ciascun componente potrà verificare le proprie partita infragruppo
       con quelle risultanti dagli altri componenti interessati. 
+      Sono presenti tutte le funzionalità per gestire in automatico:
+      - le scritture di rettifica pre consolidamento
+      - la determinazione delle Quote di Pertinenza di Terzi 
+      - la rilevazione delle Differenze di Consolidamento.
+      Il Sistema genera in automatico le seguenti tipoligie di bilancio:
+      - Aggregato
+      - Aggregato Rettificato
+      - Aggregato, Rettificato e Nettizzato
+      - Consolidato finale
+      Viene generato in automatico anche il file con estensione xbrl per l'invio 
+      alla Banca Dati Amministrazioni Pubbliche (BDAP)
     shortDescription: >-
      E' un sistema per la gestione del processo 
      di Consolidamento dei Bilanci 

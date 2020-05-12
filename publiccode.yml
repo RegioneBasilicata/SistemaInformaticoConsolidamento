@@ -21,23 +21,31 @@ description:
       - Gestione rettifiche partite Infragruppo
       - Gestione Rettifiche di coerenza e di consolidamento
       - Inserimento e gestione rettifiche di coerenza
-      - Rilevamento automatico differenze di consolidamento e inserimento automatico rettifiche di consolidamento
+      - Rilevamento automatico differenze di consolidamento 
+      - inserimento automatico rettifiche di consolidamento
       - Verifica quadrature rettifiche
       - Funzione di generazione Bilancio Aggregato (pre Consolidamento)
       - Funzione di generazione Bilancio Consolidamento
       - Report Interattivi per analisi aggregate e di dettaglio
       - Reportistica ufficiale
       - Generazione Tabelle da allagare alla Nota Integrativa
-      - Generazione file in formato xbrl per invio alla Banca Dati Amministrazioni Pubbliche (BDAP)
-      - Caratteristiche Funzionali
-      - Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice utilizzo di un browser (compatibile con tutti i più diffusi browser)
+      - Generazione file in formato xbrl per invio Banca Dati Amministrazioni Pubbliche (BDAP)
     genericName: SInC
     longDescription: >
       Il sistema consente il consolidamento dei Bilanci 
       dell’Ente capogruppo con partecipate, 
       controllate ed enti strumentali dal caricamento 
       dei dati di bilancio e delle partite infragruppo 
-      da file esterni (fogli elettronici strutturati)
+      da file esterni (fogli elettronici strutturati). 
+      Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice 
+      utilizzo di un browser (compatibile con tutti i più diffusi browser).
+      Il Sistema può essere configurato per l'accesso di ogni singolo componente
+      del GAP che sara' abilitato ad inserire:
+      - dati di bilancio
+      - dati infragruppo
+      - documentazione
+      Ciascun componente potrà verificare le proprie partita infragruppo
+      con quelle risultanti dagli altri componenti interessati. 
     shortDescription: >-
      E' un sistema per la gestione del processo 
      di Consolidamento dei Bilanci 

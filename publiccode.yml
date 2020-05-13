@@ -10,7 +10,7 @@ categories:
 description:
   it:
     features:
-      - Definizione e gestione Gruppo Amministrazione Pubblica (GAP):**
+      - Definizione e gestione Gruppo Amministrazione Pubblica (GAP)
       - Gestione anagrafiche
       - Gestione dettagli partecipazione/controllo (importo, %, ecc.).
       - Importazione dati contabili
@@ -91,6 +91,7 @@ maintenance:
   contacts:
     - email: fferrante@latraccia.it
       name: Francesco Ferrante
+      phone: '+390835336836'
   contractors:
     - name: Cooperativa EDP La Traccia
       until: '2017-01-01'

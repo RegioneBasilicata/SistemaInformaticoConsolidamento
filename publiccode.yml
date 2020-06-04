@@ -94,7 +94,7 @@ maintenance:
       phone: '+390835336836'
   contractors:
     - name: Cooperativa EDP La Traccia
-      until: '2017-01-01'
+      until: '2021-04-16'
   type: contract
 name: Sistema Informatico di Consolidamento 
 platforms:

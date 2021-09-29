@@ -61,6 +61,6 @@ Di seguito i documenti che accompagnano il codice
 
  1. Manuale di Gestione dell'Applicazione
  2. Manuale Utente
- 3. [Scripts SQL per la creazione degli oggetti di Data Base](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC%20scripts%20DB.sql)
- 4. [File sorgente Apex dell'applicazione](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC%20Application.sql)
+ 3. [Scripts SQL per la creazione degli oggetti di Data Base](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC_DB_DDL.sql)
+ 4. [File sorgente Apex dell'applicazione](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/blob/master/SQL/SInC_Application.sql)
  5. [Dizionario dati DB](https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento/tree/master/SInC%20DB%20Documentation)

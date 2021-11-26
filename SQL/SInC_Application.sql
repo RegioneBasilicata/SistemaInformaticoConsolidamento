@@ -12,7 +12,7 @@ prompt  APPLICATION 511 - SIC CONSOLIDATO
 -- Application Export:
 --   Application:     511
 --   Name:            SIC CONSOLIDATO
---   Date and Time:   11:12 Venerdì Maggio 8, 2020
+--   Date and Time:   10:57 Venerdì Novembre 26, 2021
 --   Exported By:     FFERRANTE
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -25,13 +25,13 @@ prompt  APPLICATION 511 - SIC CONSOLIDATO
 --   Using SQL*Plus as the Oracle user APEX_040100 or as the owner (parsing schema) of the application.
  
 -- Application Statistics:
---   Pages:                   36
---     Items:                178
+--   Pages:                   39
+--     Items:                194
 --     Computations:          13
---     Validations:           55
---     Processes:             67
---     Regions:               83
---     Buttons:               54
+--     Validations:           75
+--     Processes:             81
+--     Regions:               89
+--     Buttons:               58
 --     Dynamic Actions:       10
 --   Shared Components
 --     Breadcrumbs:            1
@@ -145,7 +145,7 @@ wwv_flow_api.create_flow(
   p_default_region_template=> 10503161367457986890 + wwv_flow_api.g_id_offset,
   p_error_template=> 10503157661059986863 + wwv_flow_api.g_id_offset,
   p_page_protection_enabled_y_n=> 'Y',
-  p_checksum_salt_last_reset => '20200409183405',
+  p_checksum_salt_last_reset => '20211102122715',
   p_max_session_length_sec=> 28800,
   p_compatibility_mode=> '4.1',
   p_home_link=> 'f?p=&APP_ID.:50:&SESSION.',
@@ -199,7 +199,7 @@ wwv_flow_api.create_flow(
   p_substitution_string_01 => 'PATH_JS',
   p_substitution_value_01  => '#IMAGE_PREFIX#traccia_files/sic/',
   p_last_updated_by => 'FFERRANTE',
-  p_last_upd_yyyymmddhh24miss=> '20200409183405',
+  p_last_upd_yyyymmddhh24miss=> '20211102122715',
   p_required_roles=> wwv_flow_utilities.string_to_table2(''));
  
  
@@ -6384,7 +6384,7 @@ wwv_flow_api.create_page (
  ,p_first_item => 'NO_FIRST_ITEM'
  ,p_include_apex_css_js_yn => 'Y'
  ,p_cache_page_yn => 'N'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20180119162205'
   );
 null;
@@ -7735,7 +7735,7 @@ wwv_flow_api.create_page (
  ,p_include_apex_css_js_yn => 'Y'
  ,p_cache_page_yn => 'N'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20190710131056'
+ ,p_last_upd_yyyymmddhh24miss => '20200904131124'
   );
 null;
  
@@ -8151,7 +8151,7 @@ wwv_flow_api.create_page_item(
   p_data_type=> 'VARCHAR',
   p_is_required=> false,
   p_accept_processing=> 'REPLACE_EXISTING',
-  p_item_sequence=> 10,
+  p_item_sequence=> 15,
   p_item_plug_id => 3106993221775946292+wwv_flow_api.g_id_offset,
   p_use_cache_before_default=> 'YES',
   p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
@@ -8172,7 +8172,11 @@ wwv_flow_api.create_page_item(
   p_field_alignment=> 'LEFT-CENTER',
   p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
   p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
   p_attribute_01 => 'WWV_FLOW_FILES',
+  p_show_quick_picks=>'N',
   p_item_comment => '');
  
  
@@ -8229,11 +8233,11 @@ wwv_flow_api.create_page_item(
   p_data_type=> 'VARCHAR',
   p_is_required=> false,
   p_accept_processing=> 'REPLACE_EXISTING',
-  p_item_sequence=> 20,
+  p_item_sequence=> 5,
   p_item_plug_id => 3106993221775946292+wwv_flow_api.g_id_offset,
   p_use_cache_before_default=> 'YES',
   p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
-  p_prompt=>'Ente',
+  p_prompt=>'Ente/Azienda',
   p_source=>'P101_ente',
   p_source_type=> 'ITEM',
   p_display_as=> 'NATIVE_SELECT_LIST',
@@ -8279,7 +8283,7 @@ wwv_flow_api.create_page_item(
   p_data_type=> 'VARCHAR',
   p_is_required=> false,
   p_accept_processing=> 'REPLACE_EXISTING',
-  p_item_sequence=> 30,
+  p_item_sequence=> 10,
   p_item_plug_id => 3106993221775946292+wwv_flow_api.g_id_offset,
   p_use_cache_before_default=> 'YES',
   p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
@@ -9918,7 +9922,7 @@ wwv_flow_api.create_page (
  ,p_protection_level => 'N'
  ,p_cache_page_yn => 'N'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20190703155126'
+ ,p_last_upd_yyyymmddhh24miss => '20211022172243'
   );
 null;
  
@@ -9996,7 +10000,7 @@ wwv_flow_api.create_report_region (
   p_ajax_enabled=> 'N',
   p_query_row_template=> 10503164963186986906+ wwv_flow_api.g_id_offset,
   p_query_headings_type=> 'COLON_DELMITED_LIST',
-  p_query_num_rows=> '20',
+  p_query_num_rows=> '50',
   p_query_options=> 'DERIVED_REPORT_COLUMNS',
   p_query_show_nulls_as=> '(nullo)',
   p_query_break_cols=> '0',
@@ -10157,7 +10161,7 @@ wwv_flow_api.create_report_columns (
   p_use_as_row_header=> 'N',
   p_column_alignment=>'LEFT',
   p_heading_alignment=>'LEFT',
-  p_default_sort_column_sequence=>0,
+  p_default_sort_column_sequence=>1,
   p_disable_sort_column=>'N',
   p_sum_column=> 'N',
   p_hidden_column=> 'N',
@@ -10194,7 +10198,7 @@ wwv_flow_api.create_report_columns (
   p_use_as_row_header=> 'N',
   p_column_alignment=>'LEFT',
   p_heading_alignment=>'CENTER',
-  p_default_sort_column_sequence=>0,
+  p_default_sort_column_sequence=>2,
   p_disable_sort_column=>'N',
   p_sum_column=> 'N',
   p_hidden_column=> 'N',
@@ -10449,9 +10453,16 @@ wwv_flow_api.create_page_item(
   p_display_as=> 'NATIVE_SELECT_LIST',
   p_lov=> 'select a.denominazione,a.id'||unistr('\000a')||
 'from cons_anagrafica a'||unistr('\000a')||
-'where :P101_ente=1 or'||unistr('\000a')||
-'(a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))'||unistr('\000a')||
-'order by a.denominazione',
+',cons_ana_contabile c'||unistr('\000a')||
+'where (:P101_ente=1 or'||unistr('\000a')||
+'(a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))) and'||unistr('\000a')||
+'c.anno = :P4_anno and'||unistr('\000a')||
+'c.id_ana = a.id'||unistr('\000a')||
+'and nvl(c.gap_sn,''N'') = ''S'''||unistr('\000a')||
+'and a.id in (select distinct id_ente'||unistr('\000a')||
+'from cons_piacee_importi'||unistr('\000a')||
+'where anno = :P4_anno)'||unistr('\000a')||
+'order by 1',
   p_lov_display_null=> 'NO',
   p_lov_translated=> 'N',
   p_cSize=> 30,
@@ -10469,8 +10480,8 @@ wwv_flow_api.create_page_item(
   p_lov_display_extra=>'NO',
   p_protection_level => 'N',
   p_escape_on_http_output => 'Y',
-  p_attribute_01 => 'NONE',
-  p_attribute_02 => 'N',
+  p_attribute_01 => 'SUBMIT',
+  p_attribute_03 => 'Y',
   p_show_quick_picks=>'N',
   p_item_comment => '');
  
@@ -11078,6 +11089,83 @@ end;
  
 begin
  
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare '||unistr('\000a')||
+'importo_bilancio number := 0;'||unistr('\000a')||
+'desc_conto varchar2(2000);'||unistr('\000a')||
+''||unistr('\000a')||
+'cursor infra is'||unistr('\000a')||
+'select id_conto,nvl(sum(nvl(importo_originale,0)),0) imp_infra'||unistr('\000a')||
+'from cons_infragruppo'||unistr('\000a')||
+'where anno = :p4_anno'||unistr('\000a')||
+'and id_ente = :p4_ente'||unistr('\000a')||
+'group by id_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+' for i in infra loop'||unistr('\000a')||
+'   begin'||unistr('\000a')||
+'    select nvl(importo,0) into importo_bilancio'||unistr('\000a')||
+'    from cons_piacee_importi'||unistr('\000a')||
+'    where anno = :p4_anno'||unistr('\000a')||
+'    and id_ente = :p4_ente'||unistr('\000a')||
+' ';
+
+p:=p||'   and codice_conto = i.id_conto;'||unistr('\000a')||
+'   exception when no_data_found then importo_bilancio := -1;'||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'  if importo_bilancio = -1'||unistr('\000a')||
+'   then  '||unistr('\000a')||
+' RAISE_APPLICATION_ERROR( -20001, ''Non e'''' consentito inserire infragruppo se il bilancio dell''''Ente/Azienda non e'''' stato caricato!''); '||unistr('\000a')||
+'  elsif (importo_bilancio-i.imp_infra) < 0'||unistr('\000a')||
+'   then'||unistr('\000a')||
+'   Begin'||unistr('\000a')||
+'    select codice_conto|| '' - ''||descrizione into desc_conto'||unistr('\000a')||
+'  ';
+
+p:=p||'  from cons_piacee'||unistr('\000a')||
+'    where anno = :P4_anno'||unistr('\000a')||
+'    and id = i.id_conto;'||unistr('\000a')||
+'  exception when no_data_found then desc_conto := ''Conto non definibile'';  '||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'   RAISE_APPLICATION_ERROR( -20001, ''L''''importo di infragruppo inserito sul conto ''||desc_conto||'' non e'''' compatibile con la corrispondente voce di bilancio pari a Euro ''||to_char(importo_bilancio,''999G999G999D00'')||''. Verificare!'' );'||unistr('\000a')||
+'  end if;'||unistr('\000a')||
+'';
+
+p:=p||''||unistr('\000a')||
+' end loop;'||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6131580305371555272 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 4,
+  p_process_sequence=> 30,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_region_id=> 3112612101957902462 + wwv_flow_api.g_id_offset,
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'controlla_infra',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>3112614207819902475 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'Y',
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> 'Partite infragruppo inserite correttamente',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
 ---------------------------------------
 -- ...updatable report columns for page 4
 --
@@ -11172,7 +11260,7 @@ wwv_flow_api.create_page (
  ,p_cache_page_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20171130171945'
   );
 null;
@@ -11475,7 +11563,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -13063,7 +13151,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20181129180758'
+ ,p_last_upd_yyyymmddhh24miss => '20211102122715'
   );
 null;
  
@@ -13240,9 +13328,16 @@ wwv_flow_api.create_report_columns (
   p_display_when_condition=> 'P6_BILANCIO',
   p_display_when_condition2=> 'B',
   p_display_as=>'SELECT_LIST_FROM_QUERY',
-  p_inline_lov=> 'select denominazione,id'||unistr('\000a')||
-'from cons_anagrafica'||unistr('\000a')||
-'order by denominazione',
+  p_inline_lov=> 'select a.denominazione,a.id'||unistr('\000a')||
+'from cons_anagrafica a'||unistr('\000a')||
+',cons_ana_contabile c'||unistr('\000a')||
+'where c.anno = :P6_anno and'||unistr('\000a')||
+'c.id_ana = a.id'||unistr('\000a')||
+'and nvl(c.gap_sn,''N'') = ''S'''||unistr('\000a')||
+'and a.id in (select distinct id_ente'||unistr('\000a')||
+'from cons_piacee_importi'||unistr('\000a')||
+'where anno = :P6_anno)'||unistr('\000a')||
+'order by 1',
   p_lov_show_nulls=> 'NO',
   p_column_width=> '16',
   p_is_required=> false,
@@ -13250,7 +13345,6 @@ wwv_flow_api.create_report_columns (
   p_column_default=> '1',
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'SIC_CONSOLIDATO',
   p_ref_table_name=> 'CONS_RETTIFICHE',
   p_ref_column_name=> 'ID_ENTE',
   p_column_comment=>'');
@@ -13884,6 +13978,134 @@ end;
  
 begin
  
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare '||unistr('\000a')||
+'importo_bilancio number := 0;'||unistr('\000a')||
+'importo_infra number := 0;'||unistr('\000a')||
+'desc_conto varchar2(2000);'||unistr('\000a')||
+''||unistr('\000a')||
+'cursor rettifiche is'||unistr('\000a')||
+'select codice_conto id_conto,nvl(sum(nvl(importo,0)),0) imp_rettifica'||unistr('\000a')||
+'from cons_rettifiche'||unistr('\000a')||
+'where anno = :anno'||unistr('\000a')||
+'and id_ente = :id_ente'||unistr('\000a')||
+'and nvl(FLAG_BILANCIO,''X'') = ''B'''||unistr('\000a')||
+'and nvl(BIL_INFRA,''X'') = ''B'''||unistr('\000a')||
+'group by codice_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'cursor infra is'||unistr('\000a')||
+'select codice_conto id_conto,id_ente_rif,nvl(sum(n';
+
+p:=p||'vl(importo,0)),0) imp_rettifica'||unistr('\000a')||
+'from cons_rettifiche'||unistr('\000a')||
+'where anno = :anno'||unistr('\000a')||
+'and id_ente = :id_ente'||unistr('\000a')||
+'and nvl(FLAG_BILANCIO,''X'') = ''B'''||unistr('\000a')||
+'and nvl(BIL_INFRA,''X'') = ''I'''||unistr('\000a')||
+'group by codice_conto,id_ente_rif;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+' for r in rettifiche loop'||unistr('\000a')||
+' importo_bilancio := 0;'||unistr('\000a')||
+' desc_conto := '''';'||unistr('\000a')||
+'   begin'||unistr('\000a')||
+'    select nvl(importo,0) into importo_bilancio'||unistr('\000a')||
+'    from cons_piacee_importi'||unistr('\000a')||
+'    where anno = :anno'||unistr('\000a')||
+'    and id_ente = :id_e';
+
+p:=p||'nte'||unistr('\000a')||
+'    and codice_conto = r.id_conto;'||unistr('\000a')||
+'   exception when no_data_found then importo_bilancio := -1;'||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'if importo_bilancio = -1'||unistr('\000a')||
+'   then  '||unistr('\000a')||
+' RAISE_APPLICATION_ERROR( -20001, ''Non e'''' consentito inserire rettifiche se il bilancio dell''''Ente/Azienda non e'''' stato caricato!''); '||unistr('\000a')||
+'  elsif (importo_bilancio + r.imp_rettifica) < 0'||unistr('\000a')||
+'   then'||unistr('\000a')||
+'   Begin'||unistr('\000a')||
+'    select codice_conto|| '' - ''||descrizione into desc_';
+
+p:=p||'conto'||unistr('\000a')||
+'    from cons_piacee'||unistr('\000a')||
+'    where anno = :anno'||unistr('\000a')||
+'    and id = r.id_conto;'||unistr('\000a')||
+'  exception when no_data_found then desc_conto := ''Conto non definibile'';  '||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'   RAISE_APPLICATION_ERROR( -20001, ''L''''importo della rettifica inserita sul conto ''||desc_conto||'' non e'''' compatibile con la corrispondente voce di bilancio pari a Euro ''||to_char(importo_bilancio,''999G999G999D00'')||''. Verificare!'' );'||unistr('\000a')||
+'  en';
+
+p:=p||'d if;'||unistr('\000a')||
+''||unistr('\000a')||
+' end loop;'||unistr('\000a')||
+''||unistr('\000a')||
+' for i in infra loop'||unistr('\000a')||
+' importo_infra := 0;'||unistr('\000a')||
+' desc_conto := '''';'||unistr('\000a')||
+'    select nvl(sum(nvl(importo_originale,0)+nvl(importo_rettificato,0)),0) into importo_infra'||unistr('\000a')||
+'    from cons_infragruppo'||unistr('\000a')||
+'    where anno = :anno'||unistr('\000a')||
+'    and id_ente = :id_ente'||unistr('\000a')||
+'    and id_conto = i.id_conto'||unistr('\000a')||
+'    and id_infra = i.id_ente_rif;'||unistr('\000a')||
+'  '||unistr('\000a')||
+'  if (importo_infra + i.imp_rettifica) < 0'||unistr('\000a')||
+'  then '||unistr('\000a')||
+'   Begin'||unistr('\000a')||
+'    select codice_conto';
+
+p:=p||'|| '' - ''||descrizione into desc_conto'||unistr('\000a')||
+'    from cons_piacee'||unistr('\000a')||
+'    where anno = :anno'||unistr('\000a')||
+'    and id = i.id_conto;'||unistr('\000a')||
+'  exception when no_data_found then desc_conto := ''Conto non definibile'';  '||unistr('\000a')||
+'   end;'||unistr('\000a')||
+''||unistr('\000a')||
+'  RAISE_APPLICATION_ERROR( -20001, ''L''''importo della rettifica infragruppo inserita sul conto ''||desc_conto||'' non e'''' compatibile con la corrispondente voce di infragruppo pari a Euro ''||to_char(importo_infr';
+
+p:=p||'a,''999G999G999D00'')||''. Verificare!'' );'||unistr('\000a')||
+'  end if;'||unistr('\000a')||
+''||unistr('\000a')||
+'end loop;'||unistr('\000a')||
+''||unistr('\000a')||
+' if  verifica_rettificato (:anno, :ente) <> 0 '||unistr('\000a')||
+'  then '||unistr('\000a')||
+'RAISE_APPLICATION_ERROR( -20001, ''Le rettifiche inserite provocano uno sbilanciamento tra Attivo e Passivo pari a Euro ''||to_char(verifica_rettificato (:p7_anno, :p7_ente),''999G999G999D00'')||''. Verificare!'' );'||unistr('\000a')||
+'end if;'||unistr('\000a')||
+' '||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6133068918320511446 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 7,
+  p_process_sequence=> 30,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_region_id=> 2653716573567028 + wwv_flow_api.g_id_offset,
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'controlla_rettifiche',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>2655121526567049 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'Y',
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> 'Rettifiche inserite correttamente',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
 ---------------------------------------
 -- ...updatable report columns for page 7
 --
@@ -14216,7 +14438,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -15054,7 +15276,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -15834,7 +16056,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -16585,7 +16807,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -17263,7 +17485,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -17971,7 +18193,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -18480,7 +18702,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20191003233000'
+ ,p_last_upd_yyyymmddhh24miss => '20211027094946'
   );
 null;
  
@@ -18519,43 +18741,41 @@ declare
   l_clob clob;
   l_length number := 1;
 begin
-s:=s||'select e.CODICE_CONTO'||unistr('\000a')||
-',e.descrizione'||unistr('\000a')||
+s:=s||'select e.CODICE_CONTO||'' - ''||e.descrizione codice_conto'||unistr('\000a')||
 ',a.denominazione Ente_az_riferimento'||unistr('\000a')||
 '  ,nvl(i.IMPORTO_ORIGINALE,0) importo_originale'||unistr('\000a')||
 '  ,nvl((select sum(r.importo) from cons_rettifiche r where r.anno = i.anno and r.id_ente = i.id_ente and r.codice_conto = i.id_conto and nvl(r.bil_infra,''X'') = ''I'' and (r.id_ente_rif is null OR r.id_ente_rif = i.id_infra)),0) Importo_rettifica'||unistr('\000a')||
-'  ,(nvl(i.IMPORTO_ORIGINALE,0)'||unistr('\000a')||
-'   ';
+'  ,(nvl(i.IMPO';
 
-s:=s||'+'||unistr('\000a')||
+s:=s||'RTO_ORIGINALE,0)'||unistr('\000a')||
+'   +'||unistr('\000a')||
 '   nvl((select sum(r.importo) from cons_rettifiche r where r.anno = i.anno and r.id_ente = i.id_ente and r.codice_conto = i.id_conto and nvl(r.bil_infra,''X'') = ''I'' and (r.id_ente_rif is null OR r.id_ente_rif = i.id_infra)),0)'||unistr('\000a')||
 '  ) saldo'||unistr('\000a')||
 '  ,e.ordinamento_stampa,decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99) tipo'||unistr('\000a')||
 'from cons_infragruppo i'||unistr('\000a')||
 ',cons_piacee e'||unistr('\000a')||
 ',cons_anagrafica a'||unistr('\000a')||
-'where i.anno = :P14_ANNO'||unistr('\000a')||
-'';
+'where';
 
-s:=s||'and i.id_ente = :P14_ENTE'||unistr('\000a')||
+s:=s||' i.anno = :P14_ANNO'||unistr('\000a')||
+'and i.id_ente = :P14_ENTE'||unistr('\000a')||
 'and e.anno = i.anno'||unistr('\000a')||
 'and e.id = i.ID_CONTO'||unistr('\000a')||
 'and e.ENTE_SOCIETA = ''E'''||unistr('\000a')||
 'and a.id = i.id_infra'||unistr('\000a')||
 'UNION'||unistr('\000a')||
-'select e.CODICE_CONTO'||unistr('\000a')||
-',e.descrizione'||unistr('\000a')||
+'select e.CODICE_CONTO||'' - ''||e.descrizione codice_conto'||unistr('\000a')||
 ',a.denominazione Ente_az_riferimento'||unistr('\000a')||
 ',0 importo_originale'||unistr('\000a')||
 ',sum(r.importo) importo_rettifica'||unistr('\000a')||
 ',sum(r.importo) saldo'||unistr('\000a')||
 ',e.ordinamento_stampa'||unistr('\000a')||
 ',decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99) tipo'||unistr('\000a')||
-'from cons_rettifiche r'||unistr('\000a')||
-',cons_piacee e'||unistr('\000a')||
-',cons_anagra';
+'from cons_';
 
-s:=s||'fica a'||unistr('\000a')||
+s:=s||'rettifiche r'||unistr('\000a')||
+',cons_piacee e'||unistr('\000a')||
+',cons_anagrafica a'||unistr('\000a')||
 'where r.anno = :P14_ANNO'||unistr('\000a')||
 'and r.id_ente = :P14_ENTE'||unistr('\000a')||
 'and r.codice_conto = e.id '||unistr('\000a')||
@@ -18563,17 +18783,17 @@ s:=s||'fica a'||unistr('\000a')||
 'and (r.anno,r.id_ente,r.codice_conto,r.ID_ENTE_RIF) not in (select x.ANNO, x.ID_ENTE, x.ID_CONTO,x.ID_INFRA  from cons_infragruppo x where x.anno = :P14_ANNO and x.id_ente = :P14_ENTE)'||unistr('\000a')||
 'and e.anno = r.anno'||unistr('\000a')||
 'and e.id = r.CODICE_CONTO'||unistr('\000a')||
-'and e.ENTE_SOCIETA = ''E'''||unistr('\000a')||
-'and a.id = r.id_ente_rif'||unistr('\000a')||
-'gr';
+'and e.ENTE_S';
 
-s:=s||'oup by  e.CODICE_CONTO'||unistr('\000a')||
+s:=s||'OCIETA = ''E'''||unistr('\000a')||
+'and a.id = r.id_ente_rif'||unistr('\000a')||
+'group by  e.CODICE_CONTO'||unistr('\000a')||
 ',e.descrizione'||unistr('\000a')||
 ',a.denominazione'||unistr('\000a')||
 ',0'||unistr('\000a')||
 ',e.ordinamento_stampa'||unistr('\000a')||
 ',decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99)'||unistr('\000a')||
-'order by 3,8,7';
+'order by 2,7,6';
 
 wwv_flow_api.create_page_plug (
   p_id=> 2728628340435483 + wwv_flow_api.g_id_offset,
@@ -18604,43 +18824,41 @@ end;
 declare
  a1 varchar2(32767) := null;
 begin
-a1:=a1||'select e.CODICE_CONTO'||unistr('\000a')||
-',e.descrizione'||unistr('\000a')||
+a1:=a1||'select e.CODICE_CONTO||'' - ''||e.descrizione codice_conto'||unistr('\000a')||
 ',a.denominazione Ente_az_riferimento'||unistr('\000a')||
 '  ,nvl(i.IMPORTO_ORIGINALE,0) importo_originale'||unistr('\000a')||
 '  ,nvl((select sum(r.importo) from cons_rettifiche r where r.anno = i.anno and r.id_ente = i.id_ente and r.codice_conto = i.id_conto and nvl(r.bil_infra,''X'') = ''I'' and (r.id_ente_rif is null OR r.id_ente_rif = i.id_infra)),0) Importo_rettifica'||unistr('\000a')||
-'  ,(nvl(i.IMPORTO_ORIGINALE,0)'||unistr('\000a')||
-'   ';
+'  ,(nvl(i.IMPO';
 
-a1:=a1||'+'||unistr('\000a')||
+a1:=a1||'RTO_ORIGINALE,0)'||unistr('\000a')||
+'   +'||unistr('\000a')||
 '   nvl((select sum(r.importo) from cons_rettifiche r where r.anno = i.anno and r.id_ente = i.id_ente and r.codice_conto = i.id_conto and nvl(r.bil_infra,''X'') = ''I'' and (r.id_ente_rif is null OR r.id_ente_rif = i.id_infra)),0)'||unistr('\000a')||
 '  ) saldo'||unistr('\000a')||
 '  ,e.ordinamento_stampa,decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99) tipo'||unistr('\000a')||
 'from cons_infragruppo i'||unistr('\000a')||
 ',cons_piacee e'||unistr('\000a')||
 ',cons_anagrafica a'||unistr('\000a')||
-'where i.anno = :P14_ANNO'||unistr('\000a')||
-'';
+'where';
 
-a1:=a1||'and i.id_ente = :P14_ENTE'||unistr('\000a')||
+a1:=a1||' i.anno = :P14_ANNO'||unistr('\000a')||
+'and i.id_ente = :P14_ENTE'||unistr('\000a')||
 'and e.anno = i.anno'||unistr('\000a')||
 'and e.id = i.ID_CONTO'||unistr('\000a')||
 'and e.ENTE_SOCIETA = ''E'''||unistr('\000a')||
 'and a.id = i.id_infra'||unistr('\000a')||
 'UNION'||unistr('\000a')||
-'select e.CODICE_CONTO'||unistr('\000a')||
-',e.descrizione'||unistr('\000a')||
+'select e.CODICE_CONTO||'' - ''||e.descrizione codice_conto'||unistr('\000a')||
 ',a.denominazione Ente_az_riferimento'||unistr('\000a')||
 ',0 importo_originale'||unistr('\000a')||
 ',sum(r.importo) importo_rettifica'||unistr('\000a')||
 ',sum(r.importo) saldo'||unistr('\000a')||
 ',e.ordinamento_stampa'||unistr('\000a')||
 ',decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99) tipo'||unistr('\000a')||
-'from cons_rettifiche r'||unistr('\000a')||
-',cons_piacee e'||unistr('\000a')||
-',cons_anagra';
+'from cons_';
 
-a1:=a1||'fica a'||unistr('\000a')||
+a1:=a1||'rettifiche r'||unistr('\000a')||
+',cons_piacee e'||unistr('\000a')||
+',cons_anagrafica a'||unistr('\000a')||
 'where r.anno = :P14_ANNO'||unistr('\000a')||
 'and r.id_ente = :P14_ENTE'||unistr('\000a')||
 'and r.codice_conto = e.id '||unistr('\000a')||
@@ -18648,17 +18866,17 @@ a1:=a1||'fica a'||unistr('\000a')||
 'and (r.anno,r.id_ente,r.codice_conto,r.ID_ENTE_RIF) not in (select x.ANNO, x.ID_ENTE, x.ID_CONTO,x.ID_INFRA  from cons_infragruppo x where x.anno = :P14_ANNO and x.id_ente = :P14_ENTE)'||unistr('\000a')||
 'and e.anno = r.anno'||unistr('\000a')||
 'and e.id = r.CODICE_CONTO'||unistr('\000a')||
-'and e.ENTE_SOCIETA = ''E'''||unistr('\000a')||
-'and a.id = r.id_ente_rif'||unistr('\000a')||
-'gr';
+'and e.ENTE_S';
 
-a1:=a1||'oup by  e.CODICE_CONTO'||unistr('\000a')||
+a1:=a1||'OCIETA = ''E'''||unistr('\000a')||
+'and a.id = r.id_ente_rif'||unistr('\000a')||
+'group by  e.CODICE_CONTO'||unistr('\000a')||
 ',e.descrizione'||unistr('\000a')||
 ',a.denominazione'||unistr('\000a')||
 ',0'||unistr('\000a')||
 ',e.ordinamento_stampa'||unistr('\000a')||
 ',decode(substr(e.CODICE_CONTO,1,1),''A'',1,''P'',2,99)'||unistr('\000a')||
-'order by 3,8,7';
+'order by 2,7,6';
 
 wwv_flow_api.create_worksheet(
   p_id=> 2728817511435487+wwv_flow_api.g_id_offset,
@@ -18716,7 +18934,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -18765,45 +18983,8 @@ wwv_flow_api.create_worksheet_column(
   p_db_column_name         =>'CODICE_CONTO',
   p_display_order          =>8,
   p_column_identifier      =>'H',
-  p_column_label           =>'Codice Conto',
-  p_report_label           =>'Codice Conto',
-  p_sync_form_label        =>'Y',
-  p_display_in_default_rpt =>'Y',
-  p_is_sortable            =>'Y',
-  p_allow_sorting          =>'Y',
-  p_allow_filtering        =>'Y',
-  p_allow_highlighting     =>'Y',
-  p_allow_ctrl_breaks      =>'Y',
-  p_allow_aggregations     =>'Y',
-  p_allow_computations     =>'Y',
-  p_allow_charting         =>'Y',
-  p_allow_group_by         =>'Y',
-  p_allow_hide             =>'Y',
-  p_others_may_edit        =>'Y',
-  p_others_may_view        =>'Y',
-  p_column_type            =>'STRING',
-  p_display_as             =>'TEXT',
-  p_display_text_as        =>'ESCAPE_SC',
-  p_heading_alignment      =>'CENTER',
-  p_column_alignment       =>'LEFT',
-  p_tz_dependent           =>'N',
-  p_rpt_distinct_lov       =>'Y',
-  p_rpt_show_filter_lov    =>'D',
-  p_rpt_filter_date_ranges =>'ALL',
-  p_help_text              =>'');
-end;
-/
-begin
-wwv_flow_api.create_worksheet_column(
-  p_id => 2729828742438006+wwv_flow_api.g_id_offset,
-  p_flow_id=> wwv_flow.g_flow_id,
-  p_page_id=> 14,
-  p_worksheet_id => 2728817511435487+wwv_flow_api.g_id_offset,
-  p_db_column_name         =>'DESCRIZIONE',
-  p_display_order          =>9,
-  p_column_identifier      =>'I',
-  p_column_label           =>'Descrizione',
-  p_report_label           =>'Descrizione',
+  p_column_label           =>'Conto',
+  p_report_label           =>'Conto',
   p_sync_form_label        =>'Y',
   p_display_in_default_rpt =>'Y',
   p_is_sortable            =>'Y',
@@ -19032,12 +19213,27 @@ wwv_flow_api.create_worksheet_rpt(
   p_base_report_id  => null+wwv_flow_api.g_id_offset,
   p_application_user => 'APXWS_DEFAULT',
   p_report_seq              =>10,
+  p_report_type             =>'REPORT',
   p_report_alias            =>'27295',
   p_status                  =>'PUBLIC',
   p_category_id             =>null+wwv_flow_api.g_id_offset,
   p_is_default              =>'Y',
   p_display_rows            =>100000,
   p_report_columns          =>rc1,
+  p_sort_column_1           =>'ENTE_AZ_RIFERIMENTO',
+  p_sort_direction_1        =>'ASC',
+  p_sort_column_2           =>'CODICE_CONTO',
+  p_sort_direction_2        =>'ASC',
+  p_sort_column_3           =>'0',
+  p_sort_direction_3        =>'ASC',
+  p_sort_column_4           =>'0',
+  p_sort_direction_4        =>'ASC',
+  p_sort_column_5           =>'0',
+  p_sort_direction_5        =>'ASC',
+  p_sort_column_6           =>'0',
+  p_sort_direction_6        =>'ASC',
+  p_break_on                =>'ENTE_AZ_RIFERIMENTO:0:0:0:0:0',
+  p_break_enabled_on        =>'ENTE_AZ_RIFERIMENTO:0:0:0:0:0',
   p_sum_columns_on_break    =>'SALDO',
   p_flashback_enabled       =>'N',
   p_calendar_display_column =>'');
@@ -19213,7 +19409,9 @@ wwv_flow_api.create_page_item(
 'from cons_anagrafica a'||unistr('\000a')||
 'where (:P101_ente=1 or'||unistr('\000a')||
 'a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))'||unistr('\000a')||
-'and a.id in (select id_ente from cons_infragruppo where anno = :P14_anno)'||unistr('\000a')||
+'and a.id in (select id_ente from cons_infragruppo where anno = :P14_anno'||unistr('\000a')||
+'UNION'||unistr('\000a')||
+'select id_ente from cons_rettifiche where anno = :P14_anno and bil_infra = ''I'')'||unistr('\000a')||
 'order by a.denominazione'||unistr('\000a')||
 '',
   p_lov_display_null=> 'NO',
@@ -19277,7 +19475,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20191003233214'
+ ,p_last_upd_yyyymmddhh24miss => '20210126130140'
   );
 null;
  
@@ -19507,7 +19705,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -19754,50 +19952,16 @@ wwv_flow_api.create_worksheet_rpt(
   p_is_default              =>'Y',
   p_display_rows            =>100000,
   p_report_columns          =>rc1,
+  p_break_on                =>'ENTE_AZIENDA:0:0:0:0:0',
+  p_break_enabled_on        =>'ENTE_AZIENDA:0:0:0:0:0',
   p_sum_columns_on_break    =>'IMPORTO_RETTIFICATO',
   p_flashback_enabled       =>'N',
   p_calendar_display_column =>'');
 end;
 /
 begin
-wwv_flow_api.create_worksheet_condition(
-  p_id => 4331118432692500108+wwv_flow_api.g_id_offset,
-  p_flow_id=> wwv_flow.g_flow_id,
-  p_page_id=> 15,
-  p_worksheet_id => 2803502122362091+wwv_flow_api.g_id_offset,
-  p_report_id => 2804125997362096+wwv_flow_api.g_id_offset,
-  p_condition_type          =>'FILTER',
-  p_allow_delete            =>'Y',
-  p_column_name             =>'ENTE_AZIENDA',
-  p_operator                =>'=',
-  p_expr                    =>'FONDAZIONE CITTA'' DELLA PACE PER I BAMBINI BASILICATA ONLUS',
-  p_condition_sql           =>'"ENTE_AZIENDA" = #APXWS_EXPR#',
-  p_condition_display       =>'#APXWS_COL_NAME# = ''FONDAZIONE CITTA'' DELLA PACE PER I BAMBINI BASILICATA ONLUS''  ',
-  p_enabled                 =>'N',
-  p_column_format           =>'');
-end;
-/
-begin
-wwv_flow_api.create_worksheet_condition(
-  p_id => 4331118500527500111+wwv_flow_api.g_id_offset,
-  p_flow_id=> wwv_flow.g_flow_id,
-  p_page_id=> 15,
-  p_worksheet_id => 2803502122362091+wwv_flow_api.g_id_offset,
-  p_report_id => 2804125997362096+wwv_flow_api.g_id_offset,
-  p_condition_type          =>'FILTER',
-  p_allow_delete            =>'Y',
-  p_column_name             =>'ENTE_AZIENDA',
-  p_operator                =>'=',
-  p_expr                    =>'FONDAZIONE CITTÃ¿ DELLA PACE PER I BAMBINI BASILICATA ONLUS',
-  p_condition_sql           =>'"ENTE_AZIENDA" = #APXWS_EXPR#',
-  p_condition_display       =>'#APXWS_COL_NAME# = ''FONDAZIONE CITTÃ¿ DELLA PACE PER I BAMBINI BASILICATA ONLUS''  ',
-  p_enabled                 =>'N',
-  p_column_format           =>'');
-end;
-/
-begin
 wwv_flow_api.create_worksheet_computation(
-  p_id => 4331118621609500113+wwv_flow_api.g_id_offset,
+  p_id => 6153575003600259863+wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 15,
   p_worksheet_id => 2803502122362091+wwv_flow_api.g_id_offset,
@@ -19981,7 +20145,9 @@ wwv_flow_api.create_page_item(
 'from cons_anagrafica a'||unistr('\000a')||
 'where (:P101_ente=1 or'||unistr('\000a')||
 'a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))'||unistr('\000a')||
-'and a.id in (select id_ente from cons_infragruppo where anno = :P15_anno)'||unistr('\000a')||
+'and a.id in (select id_ente from cons_infragruppo where anno = :P15_anno'||unistr('\000a')||
+'UNION'||unistr('\000a')||
+'select id_ente from cons_rettifiche where anno = :P15_anno and bil_infra = ''I'')'||unistr('\000a')||
 'order by a.denominazione',
   p_lov_display_null=> 'NO',
   p_lov_translated=> 'N',
@@ -20344,7 +20510,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -21559,7 +21725,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -22478,7 +22644,7 @@ wwv_flow_api.create_page (
  ,p_cache_by_user_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20180119163148'
   );
 null;
@@ -22639,7 +22805,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -23236,7 +23402,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -23408,13 +23574,14 @@ wwv_flow_api.create_worksheet_rpt(
   p_is_default              =>'Y',
   p_display_rows            =>100000,
   p_report_columns          =>rc1,
+  p_sum_columns_on_break    =>'IMPORTO_ORIGINALE',
   p_flashback_enabled       =>'N',
   p_calendar_display_column =>'');
 end;
 /
 begin
 wwv_flow_api.create_worksheet_condition(
-  p_id => 4321419708504893375+wwv_flow_api.g_id_offset,
+  p_id => 5744170800191843443+wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_page_id=> 19,
   p_worksheet_id => 3445363526657129643+wwv_flow_api.g_id_offset,
@@ -23696,7 +23863,7 @@ wwv_flow_api.create_page (
  ,p_cache_by_user_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20180119163207'
   );
 null;
@@ -23804,7 +23971,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -24341,7 +24508,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20200409183405'
+ ,p_last_upd_yyyymmddhh24miss => '20210426173320'
   );
 null;
  
@@ -24408,25 +24575,25 @@ s:=s||'select tipo_documento'||unistr('\000a')||
 'b.date_created data,'||unistr('\000a')||
 'case when b.doc_type';
 
-s:=s||' = ''ACC'' then (select x.ind_cap from CONFIN.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
-'    when b.doc_type like ''IMP%'' then (select x.ind_cap from CONFIN.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
+s:=s||' = ''ACC'' then (select x.ind_cap from gat2.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
+'    when b.doc_type like ''IMP%'' then (select x.ind_cap from gat2.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
 '    else b.segment2 '||unistr('\000a')||
 '    end capitolo,'||unistr('\000a')||
 'upper(b.description) causale,'||unistr('\000a')||
 'nv';
 
 s:=s||'l(b.document_amount,0) importo_documento,'||unistr('\000a')||
-'case when b.doc_type = ''ACC'' then CONFIN.open_balance_acc_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type like ''IMP%'' then CONFIN.open_balance_imp_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type = ''LIQ'' then CONFIN.open_balance_liq_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'case when b.doc_type = ''ACC'' then gat2.open_balance_acc_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type like ''IMP%'' then gat2.open_balance_imp_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type = ''LIQ'' then gat2.open_balance_liq_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
 '     else nvl(b.open_balance_proposed,0)'||unistr('\000a')||
 '     end residuo_documento,'||unistr('\000a')||
 'nvl';
 
 s:=s||'(a.amount,0) importo_terza_parte,'||unistr('\000a')||
-'case when b.doc_type = ''ACC'' then CONFIN.open_balance_acc_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type like ''IMP%'' then CONFIN.open_balance_imp_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type = ''LIQ'' then CONFIN.open_balance_liq_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'case when b.doc_type = ''ACC'' then gat2.open_balance_acc_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type like ''IMP%'' then gat2.open_balance_imp_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type = ''LIQ'' then gat2.open_balance_liq_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
 '     else nvl(';
 
 s:=s||'a.open_balance_proposed,0) '||unistr('\000a')||
@@ -24435,8 +24602,8 @@ s:=s||'a.open_balance_proposed,0) '||unistr('\000a')||
 'b.attribute14 numero_atto,'||unistr('\000a')||
 'b.data_atto_autorizzativo data_atto'||unistr('\000a')||
 'from '||unistr('\000a')||
-'CONFIN.fin_t_documenti_terze_parti a,'||unistr('\000a')||
-'CONFIN.fin_t_documenti b,'||unistr('\000a')||
+'gat2.fin_t_documenti_terze_parti a,'||unistr('\000a')||
+'gat2.fin_t_documenti b,'||unistr('\000a')||
 'cons_anagrafica p'||unistr('\000a')||
 'where nvl(p.id_sic,0) = :P21_CONTROLLATA'||unistr('\000a')||
 'and a.id_ana = p.id_sic'||unistr('\000a')||
@@ -24452,8 +24619,8 @@ s:=s||'tus_flag,''N'') <> ''Y'' '||unistr('\000a')||
 'b.segment8 esercizio_finanziario,'||unistr('\000a')||
 'b.doc_sequence_value numero,'||unistr('\000a')||
 'b.date_created data,'||unistr('\000a')||
-'upper(b.description) causale,'||unistr('\000a')||
 'b.segment2 capitolo,'||unistr('\000a')||
+'upper(b.description) causale,'||unistr('\000a')||
 'nvl(b.document_amount,0) importo_documento,'||unistr('\000a')||
 'nvl(b.open_balance_proposed,0) residuo_documento,'||unistr('\000a')||
 'nvl(a.amo';
@@ -24464,8 +24631,8 @@ s:=s||'unt,0) importo_terza_parte,'||unistr('\000a')||
 'b.attribute14 numero_atto,'||unistr('\000a')||
 'b.data_atto_autorizzativo'||unistr('\000a')||
 'from '||unistr('\000a')||
-'CONFIN.fin_t_documenti_terze_parti a,'||unistr('\000a')||
-'CONFIN.fin_t_documenti b,'||unistr('\000a')||
+'gat2.fin_t_documenti_terze_parti a,'||unistr('\000a')||
+'gat2.fin_t_documenti b,'||unistr('\000a')||
 'cons_anagrafica p'||unistr('\000a')||
 'where nvl(p.id_sic,0) = :P21_CONTROLLATA'||unistr('\000a')||
 'and a.id_ana = p.id_sic'||unistr('\000a')||
@@ -24528,25 +24695,25 @@ a1:=a1||'select tipo_documento'||unistr('\000a')||
 'b.date_created data,'||unistr('\000a')||
 'case when b.doc_type';
 
-a1:=a1||' = ''ACC'' then (select x.ind_cap from CONFIN.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
-'    when b.doc_type like ''IMP%'' then (select x.ind_cap from CONFIN.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
+a1:=a1||' = ''ACC'' then (select x.ind_cap from gat2.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
+'    when b.doc_type like ''IMP%'' then (select x.ind_cap from gat2.bas_ind x where x.ind_anno = to_char(decode(:P21_DATA,null,sysdate,:P21_DATA),''yyyy'') and x.doc_id = b.doc_id)'||unistr('\000a')||
 '    else b.segment2 '||unistr('\000a')||
 '    end capitolo,'||unistr('\000a')||
 'upper(b.description) causale,'||unistr('\000a')||
 'nv';
 
 a1:=a1||'l(b.document_amount,0) importo_documento,'||unistr('\000a')||
-'case when b.doc_type = ''ACC'' then CONFIN.open_balance_acc_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type like ''IMP%'' then CONFIN.open_balance_imp_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type = ''LIQ'' then CONFIN.open_balance_liq_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'case when b.doc_type = ''ACC'' then gat2.open_balance_acc_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type like ''IMP%'' then gat2.open_balance_imp_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type = ''LIQ'' then gat2.open_balance_liq_data(b.doc_id,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
 '     else nvl(b.open_balance_proposed,0)'||unistr('\000a')||
 '     end residuo_documento,'||unistr('\000a')||
 'nvl';
 
 a1:=a1||'(a.amount,0) importo_terza_parte,'||unistr('\000a')||
-'case when b.doc_type = ''ACC'' then CONFIN.open_balance_acc_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type like ''IMP%'' then CONFIN.open_balance_imp_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
-'     when b.doc_type = ''LIQ'' then CONFIN.open_balance_liq_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'case when b.doc_type = ''ACC'' then gat2.open_balance_acc_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type like ''IMP%'' then gat2.open_balance_imp_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
+'     when b.doc_type = ''LIQ'' then gat2.open_balance_liq_tp_data(b.doc_id,p.id_sic,a.id_sede,nvl(:P21_DATA,sysdate))'||unistr('\000a')||
 '     else nvl(';
 
 a1:=a1||'a.open_balance_proposed,0) '||unistr('\000a')||
@@ -24555,8 +24722,8 @@ a1:=a1||'a.open_balance_proposed,0) '||unistr('\000a')||
 'b.attribute14 numero_atto,'||unistr('\000a')||
 'b.data_atto_autorizzativo data_atto'||unistr('\000a')||
 'from '||unistr('\000a')||
-'CONFIN.fin_t_documenti_terze_parti a,'||unistr('\000a')||
-'CONFIN.fin_t_documenti b,'||unistr('\000a')||
+'gat2.fin_t_documenti_terze_parti a,'||unistr('\000a')||
+'gat2.fin_t_documenti b,'||unistr('\000a')||
 'cons_anagrafica p'||unistr('\000a')||
 'where nvl(p.id_sic,0) = :P21_CONTROLLATA'||unistr('\000a')||
 'and a.id_ana = p.id_sic'||unistr('\000a')||
@@ -24572,8 +24739,8 @@ a1:=a1||'tus_flag,''N'') <> ''Y'' '||unistr('\000a')||
 'b.segment8 esercizio_finanziario,'||unistr('\000a')||
 'b.doc_sequence_value numero,'||unistr('\000a')||
 'b.date_created data,'||unistr('\000a')||
-'upper(b.description) causale,'||unistr('\000a')||
 'b.segment2 capitolo,'||unistr('\000a')||
+'upper(b.description) causale,'||unistr('\000a')||
 'nvl(b.document_amount,0) importo_documento,'||unistr('\000a')||
 'nvl(b.open_balance_proposed,0) residuo_documento,'||unistr('\000a')||
 'nvl(a.amo';
@@ -24584,8 +24751,8 @@ a1:=a1||'unt,0) importo_terza_parte,'||unistr('\000a')||
 'b.attribute14 numero_atto,'||unistr('\000a')||
 'b.data_atto_autorizzativo'||unistr('\000a')||
 'from '||unistr('\000a')||
-'CONFIN.fin_t_documenti_terze_parti a,'||unistr('\000a')||
-'CONFIN.fin_t_documenti b,'||unistr('\000a')||
+'gat2.fin_t_documenti_terze_parti a,'||unistr('\000a')||
+'gat2.fin_t_documenti b,'||unistr('\000a')||
 'cons_anagrafica p'||unistr('\000a')||
 'where nvl(p.id_sic,0) = :P21_CONTROLLATA'||unistr('\000a')||
 'and a.id_ana = p.id_sic'||unistr('\000a')||
@@ -24656,7 +24823,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -26721,7 +26888,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20191104161125'
+ ,p_last_upd_yyyymmddhh24miss => '20210128185022'
   );
 null;
  
@@ -26775,9 +26942,9 @@ s:=s||'select *'||unistr('\000a')||
 
 s:=s||' :P23_ANNO'||unistr('\000a')||
 'and a.id = t.id_ente'||unistr('\000a')||
-'and nvl(t.importo,0) > 0'||unistr('\000a')||
+'and nvl(t.importo,0) <> 0'||unistr('\000a')||
 'order by t.codice_conto,abs(t.importo) desc)'||unistr('\000a')||
-'WHERE rank <= 4;';
+'WHERE rank <= 6;';
 
 wwv_flow_api.create_page_plug (
   p_id=> 5004931510367022593 + wwv_flow_api.g_id_offset,
@@ -26823,9 +26990,9 @@ a1:=a1||'select *'||unistr('\000a')||
 
 a1:=a1||' :P23_ANNO'||unistr('\000a')||
 'and a.id = t.id_ente'||unistr('\000a')||
-'and nvl(t.importo,0) > 0'||unistr('\000a')||
+'and nvl(t.importo,0) <> 0'||unistr('\000a')||
 'order by t.codice_conto,abs(t.importo) desc)'||unistr('\000a')||
-'WHERE rank <= 4;';
+'WHERE rank <= 6;';
 
 wwv_flow_api.create_worksheet(
   p_id=> 5004931722383022596+wwv_flow_api.g_id_offset,
@@ -26883,7 +27050,7 @@ wwv_flow_api.create_worksheet(
   p_icon_view_enabled_yn=>'N',
   p_icon_view_columns_per_row=>1,
   p_detail_view_enabled_yn=>'N',
-  p_owner=>'CONFIN');
+  p_owner=>'GAT2');
 end;
 /
 begin
@@ -27309,6 +27476,2849 @@ end;
 /
 
  
+--application/pages/page_00024
+prompt  ...PAGE 24: Estrazioni BDAP
+--
+ 
+begin
+ 
+wwv_flow_api.create_page (
+  p_flow_id => wwv_flow.g_flow_id
+ ,p_id => 24
+ ,p_name => 'Estrazioni BDAP'
+ ,p_step_title => 'Estrazioni BDAP'
+ ,p_allow_duplicate_submissions => 'Y'
+ ,p_step_sub_title => 'Estrazioni BDAP'
+ ,p_step_sub_title_type => 'TEXT_WITH_SUBSTITUTIONS'
+ ,p_first_item => 'AUTO_FIRST_ITEM'
+ ,p_include_apex_css_js_yn => 'Y'
+ ,p_autocomplete_on_off => 'ON'
+ ,p_page_is_public_y_n => 'N'
+ ,p_protection_level => 'N'
+ ,p_cache_page_yn => 'N'
+ ,p_help_text => 
+'Guida non disponibile per questa pagina.'
+ ,p_last_updated_by => 'FFERRANTE'
+ ,p_last_upd_yyyymmddhh24miss => '20210930101505'
+  );
+null;
+ 
+end;
+/
+
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 6122027311006673357 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 24,
+  p_plug_name=> 'Anno Finanziario',
+  p_region_name=>'',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 10,
+  p_plug_display_column=> 1,
+  p_plug_display_point=> 'AFTER_SHOW_ITEMS',
+  p_plug_source=> s,
+  p_plug_source_type=> 'STATIC_TEXT',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'QUERY_COLUMNS',
+  p_plug_query_num_rows_type => 'NEXT_PREVIOUS_LINKS',
+  p_plug_query_row_count_max => 500,
+  p_plug_query_show_nulls_as => ' - ',
+  p_plug_display_condition_type => '',
+  p_pagination_display_position=>'BOTTOM_RIGHT',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_plug_comment=> '');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 6122028323859673443 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 24,
+  p_plug_name=> 'Prelievo Dati Consolidato',
+  p_region_name=>'',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 20,
+  p_plug_display_column=> 1,
+  p_plug_display_point=> 'AFTER_SHOW_ITEMS',
+  p_plug_source=> s,
+  p_plug_source_type=> 'STATIC_TEXT',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_plug_comment=> '');
+end;
+/
+ 
+begin
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_branch(
+  p_id=>6122030622279673481 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_branch_action=> 'f?p=&APP_ID.:24:&SESSION.:PRELEVASDB:&DEBUG.:::',
+  p_branch_point=> 'AFTER_PROCESSING',
+  p_branch_type=> 'REDIRECT_URL',
+  p_branch_when_button_id=>6122028722729673446+ wwv_flow_api.g_id_offset,
+  p_branch_sequence=> 20,
+  p_save_state_before_branch_yn=>'N',
+  p_branch_comment=> 'Created 10-LUG-2017 16:19 by GAT2');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6122027517148673359 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_name=>'P24_ANNO_FINANZIARIO',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> true,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 10,
+  p_item_plug_id => 6122027311006673357+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Anno Finanziario ',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select distinct ANNO_FINANZIARIO as display_value, ANNO_FINANZIARIO as return_value '||unistr('\000a')||
+'  from FIN_T_DATI_GENERALI'||unistr('\000a')||
+'where nvl(attivo,''N'') = ''S'''||unistr('\000a')||
+' order by 1 DESC',
+  p_lov_display_null=> 'YES',
+  p_lov_translated=> 'N',
+  p_lov_null_text=>'',
+  p_lov_null_value=> '',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'YES',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'RIGHT',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'SUBMIT',
+  p_attribute_03 => 'Y',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6122027732233673441 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_name=>'P24_CREA_DATI',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 20,
+  p_item_plug_id => 6122027311006673357+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'NO',
+  p_prompt=>'Crea Dati',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'BUTTON',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> null,
+  p_cMaxlength=> 2000,
+  p_cHeight=> null,
+  p_tag_attributes  => 'template:'||to_char(10503158740789986868 + wwv_flow_api.g_id_offset),
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'N',
+  p_button_execute_validations=>'Y',
+  p_button_action => 'SUBMIT',
+  p_button_is_hot=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6122027929609673442 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_name=>'P24_ID_ENTE',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 30,
+  p_item_plug_id => 6122027311006673357+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Codice BDAP assegnato all''Ente :',
+  p_pre_element_text=>'<b>',
+  p_post_element_text=>'</b>',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_DISPLAY_ONLY',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'N',
+  p_attribute_02 => 'VALUE',
+  p_attribute_04 => 'Y',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6122028101343673443 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_name=>'P24_DIRECTORY_DB',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 40,
+  p_item_plug_id => 6122027311006673357+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_HIDDEN',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'Y',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6122028722729673446 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 24,
+  p_name=>'P24_PRELEVA_SDB',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 60,
+  p_item_plug_id => 6122028323859673443+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'NO',
+  p_prompt=>'Preleva Schemi di Bilancio (SDB)',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'BUTTON',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> null,
+  p_cMaxlength=> 2000,
+  p_cHeight=> null,
+  p_tag_attributes  => 'template:'||to_char(10503158740789986868 + wwv_flow_api.g_id_offset),
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'N',
+  p_button_execute_validations=>'Y',
+  p_button_action => 'SUBMIT',
+  p_button_is_hot=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'SELECT codice_bdap,'||unistr('\000a')||
+'       directory_oracle_bdap'||unistr('\000a')||
+'INTO :P24_id_ente,'||unistr('\000a')||
+'     :P24_directory_db'||unistr('\000a')||
+'FROM fin_t_dati_generali'||unistr('\000a')||
+'WHERE anno_finanziario = :P24_anno_finanziario;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122030318318673476 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 1,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'leggi_dati_di_base',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6122027732233673441 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'--  bdap(:P24_anno_finanziario,v(''APP_USER''),:P24_id_ente);'||unistr('\000a')||
+''||unistr('\000a')||
+'bdap_consolidato(:P24_anno_finanziario);';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122030105399673471 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 10,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'crea_dati_su_db',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6122027732233673441 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'DECLARE'||unistr('\000a')||
+''||unistr('\000a')||
+'  f1 UTL_FILE.FILE_TYPE;'||unistr('\000a')||
+'  vnome_file VARCHAR2(200);'||unistr('\000a')||
+''||unistr('\000a')||
+'  CURSOR c_consolidato IS'||unistr('\000a')||
+''||unistr('\000a')||
+'    SELECT contenuto linea_di_testo'||unistr('\000a')||
+'    FROM fin_t_bdap '||unistr('\000a')||
+'    WHERE utente = ''CONS''||:P24_anno_finanziario AND  '||unistr('\000a')||
+'          anno = :P24_anno_finanziario AND'||unistr('\000a')||
+'          tipo_trasmissione = ''CONSSDB'''||unistr('\000a')||
+'    ORDER BY riga;'||unistr('\000a')||
+''||unistr('\000a')||
+'BEGIN'||unistr('\000a')||
+''||unistr('\000a')||
+' vnome_file := :P24_anno_finanziario||:P24_id_ente||''CONSSDB.xbrl'';'||unistr('\000a')||
+' f1 := UTL_FILE.FOPE';
+
+p:=p||'N(:P24_directory_db,vnome_file,''W'',32767); '||unistr('\000a')||
+' UTL_FILE.FCLOSE(f1); '||unistr('\000a')||
+' UTL_FILE.FREMOVE(:P24_directory_db,vnome_file);'||unistr('\000a')||
+''||unistr('\000a')||
+' f1 := UTL_FILE.FOPEN(:P24_directory_db,vnome_file,''W'',32767); '||unistr('\000a')||
+''||unistr('\000a')||
+' FOR r in c_consolidato LOOP'||unistr('\000a')||
+'   UTL_FILE.PUT_LINE(f1,r.linea_di_testo,TRUE);'||unistr('\000a')||
+' END LOOP;'||unistr('\000a')||
+''||unistr('\000a')||
+' UTL_FILE.FCLOSE(f1); '||unistr('\000a')||
+''||unistr('\000a')||
+'END;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122029919564673470 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 20,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'crea_file',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6122027732233673441 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> 'I file dati sono stato generati/rigenerati e sono pronti per essere prelevati.',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare'||unistr('\000a')||
+'    vnome_file VARCHAR2(200);'||unistr('\000a')||
+''||unistr('\000a')||
+'    l_clob clob;'||unistr('\000a')||
+'    l_blob blob;'||unistr('\000a')||
+'    l_sql_delimiter varchar2(30);'||unistr('\000a')||
+'    l_lang_context  integer := DBMS_LOB.DEFAULT_LANG_CTX;'||unistr('\000a')||
+'    l_warning       integer := DBMS_LOB.WARN_INCONVERTIBLE_CHAR;'||unistr('\000a')||
+'    l_dest_offset   integer := 1;'||unistr('\000a')||
+'    l_source_offset integer := 1;'||unistr('\000a')||
+'    wNomeFile varchar2(2000);'||unistr('\000a')||
+'    wIdTestataFattura number;'||unistr('\000a')||
+''||unistr('\000a')||
+'    fatt_bfile  BFILE;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+''||unistr('\000a')||
+''||unistr('\000a')||
+'-- IND'||unistr('\000a')||
+''||unistr('\000a')||
+' ';
+
+p:=p||'vnome_file := :P24_anno_finanziario||:P24_id_ente||''PREVIND.xbrl'';'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.createtemporary (l_clob, false);'||unistr('\000a')||
+''||unistr('\000a')||
+' fatt_bfile := BFILENAME(:P24_directory_db, vnome_file);'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.OPEN(fatt_bfile);'||unistr('\000a')||
+' DBMS_LOB.loadfromfile(l_clob, fatt_bfile, DBMS_LOB.getlength(fatt_bfile));'||unistr('\000a')||
+' '||unistr('\000a')||
+''||unistr('\000a')||
+' dbms_lob.createtemporary(l_blob, true);'||unistr('\000a')||
+''||unistr('\000a')||
+' dbms_lob.converttoblob ('||unistr('\000a')||
+'     dest_lob    => l_blob,'||unistr('\000a')||
+'     src_clob    => l_clob,';
+
+p:=p||''||unistr('\000a')||
+'     amount      => DBMS_LOB.LOBMAXSIZE,'||unistr('\000a')||
+'     dest_offset => l_dest_offset,'||unistr('\000a')||
+'     src_offset  => l_source_offset,'||unistr('\000a')||
+'     blob_csid   => DBMS_LOB.DEFAULT_CSID,'||unistr('\000a')||
+'     lang_context=> l_lang_context,'||unistr('\000a')||
+'     warning     => l_warning'||unistr('\000a')||
+' );'||unistr('\000a')||
+' '||unistr('\000a')||
+' sys.htp.init;'||unistr('\000a')||
+' sys.owa_util.mime_header( ''application/octet-stream'', FALSE,''UTF-8'' );'||unistr('\000a')||
+' sys.htp.p(''Content-length: '' || sys.dbms_lob.getlength( l_blob ));'||unistr('\000a')||
+' sys.htp.p(''Cont';
+
+p:=p||'ent-Disposition: attachment; filename="''||vnome_file||''"'' );'||unistr('\000a')||
+' sys.owa_util.http_header_close;'||unistr('\000a')||
+' sys.wpg_docload.download_file(l_blob);'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.FREETEMPORARY(l_clob);'||unistr('\000a')||
+' DBMS_LOB.FILECLOSEALL ;'||unistr('\000a')||
+''||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122029306542673465 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 30,
+  p_process_point=> 'BEFORE_HEADER',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'preleva_ind',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'ON_ERROR_PAGE',
+  p_process_when=>'if :request = ''PRELEVAIND'' and '||unistr('\000a')||
+'   :p24_anno_finanziario is not null and'||unistr('\000a')||
+'   :p24_id_ente is not null'||unistr('\000a')||
+'   then return true;'||unistr('\000a')||
+'   else return false;'||unistr('\000a')||
+'end if;',
+  p_process_when_type=>'FUNCTION_BODY',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare'||unistr('\000a')||
+'    vnome_file VARCHAR2(200);'||unistr('\000a')||
+''||unistr('\000a')||
+'    l_clob clob;'||unistr('\000a')||
+'    l_blob blob;'||unistr('\000a')||
+'    l_sql_delimiter varchar2(30);'||unistr('\000a')||
+'    l_lang_context  integer := DBMS_LOB.DEFAULT_LANG_CTX;'||unistr('\000a')||
+'    l_warning       integer := DBMS_LOB.WARN_INCONVERTIBLE_CHAR;'||unistr('\000a')||
+'    l_dest_offset   integer := 1;'||unistr('\000a')||
+'    l_source_offset integer := 1;'||unistr('\000a')||
+'    wNomeFile varchar2(2000);'||unistr('\000a')||
+'    wIdTestataFattura number;'||unistr('\000a')||
+''||unistr('\000a')||
+'    fatt_bfile  BFILE;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+''||unistr('\000a')||
+'-- SDB'||unistr('\000a')||
+''||unistr('\000a')||
+''||unistr('\000a')||
+' ';
+
+p:=p||'vnome_file := :P24_anno_finanziario||:P24_id_ente||''PREVSDB.xbrl'';'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.createtemporary (l_clob, false);'||unistr('\000a')||
+''||unistr('\000a')||
+' fatt_bfile := BFILENAME(:P24_directory_db, vnome_file);'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.OPEN(fatt_bfile);'||unistr('\000a')||
+' DBMS_LOB.loadfromfile(l_clob, fatt_bfile, DBMS_LOB.getlength(fatt_bfile));'||unistr('\000a')||
+' '||unistr('\000a')||
+''||unistr('\000a')||
+' dbms_lob.createtemporary(l_blob, true);'||unistr('\000a')||
+''||unistr('\000a')||
+' dbms_lob.converttoblob ('||unistr('\000a')||
+'     dest_lob    => l_blob,'||unistr('\000a')||
+'     src_clob    => l_clob,';
+
+p:=p||''||unistr('\000a')||
+'     amount      => DBMS_LOB.LOBMAXSIZE,'||unistr('\000a')||
+'     dest_offset => l_dest_offset,'||unistr('\000a')||
+'     src_offset  => l_source_offset,'||unistr('\000a')||
+'     blob_csid   => DBMS_LOB.DEFAULT_CSID,'||unistr('\000a')||
+'     lang_context=> l_lang_context,'||unistr('\000a')||
+'     warning     => l_warning'||unistr('\000a')||
+' );'||unistr('\000a')||
+' '||unistr('\000a')||
+' sys.htp.init;'||unistr('\000a')||
+' sys.owa_util.mime_header( ''application/octet-stream'', FALSE,''UTF-8'' );'||unistr('\000a')||
+' sys.htp.p(''Content-length: '' || sys.dbms_lob.getlength( l_blob ));'||unistr('\000a')||
+' sys.htp.p(''Cont';
+
+p:=p||'ent-Disposition: attachment; filename="''||vnome_file||''"'' );'||unistr('\000a')||
+' sys.owa_util.http_header_close;'||unistr('\000a')||
+' sys.wpg_docload.download_file(l_blob);'||unistr('\000a')||
+''||unistr('\000a')||
+' DBMS_LOB.FREETEMPORARY(l_clob);'||unistr('\000a')||
+' DBMS_LOB.FILECLOSEALL ;'||unistr('\000a')||
+''||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122029530236673466 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 30,
+  p_process_point=> 'BEFORE_HEADER',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'preleva_sdb',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'ON_ERROR_PAGE',
+  p_process_when=>'if :request = ''PRELEVASDB'' and '||unistr('\000a')||
+'   :p24_anno_finanziario is not null and'||unistr('\000a')||
+'   :p24_id_ente is not null'||unistr('\000a')||
+'   then return true;'||unistr('\000a')||
+'   else return false;'||unistr('\000a')||
+'end if;',
+  p_process_when_type=>'FUNCTION_BODY',
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'Begin'||unistr('\000a')||
+'SELECT codice_bdap,'||unistr('\000a')||
+'       directory_oracle_bdap'||unistr('\000a')||
+'INTO :P24_id_ente,'||unistr('\000a')||
+'     :P24_directory_db'||unistr('\000a')||
+'FROM fin_t_dati_generali'||unistr('\000a')||
+'WHERE anno_finanziario = :P24_anno_finanziario;'||unistr('\000a')||
+'exception when no_data_found then :p24_id_ente := ''Codice Ente non rilevato'';'||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6122029125878673448 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 24,
+  p_process_sequence=> 10,
+  p_process_point=> 'ON_SUBMIT_BEFORE_COMPUTATION',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'Dati_Generali',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'ON_ERROR_PAGE',
+  p_process_when=>':p24_anno_finanziario',
+  p_process_when_type=>'',
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+---------------------------------------
+-- ...updatable report columns for page 24
+--
+ 
+begin
+ 
+null;
+end;
+null;
+ 
+end;
+/
+
+ 
+--application/pages/page_00025
+prompt  ...PAGE 25: Dati infragruppo - prova blocchi
+--
+ 
+begin
+ 
+wwv_flow_api.create_page (
+  p_flow_id => wwv_flow.g_flow_id
+ ,p_id => 25
+ ,p_name => 'Dati infragruppo - prova blocchi'
+ ,p_step_title => 'Dati infragruppo - prova blocchi'
+ ,p_allow_duplicate_submissions => 'Y'
+ ,p_step_sub_title => 'Dati infragruppo - prova blocchi'
+ ,p_step_sub_title_type => 'TEXT_WITH_SUBSTITUTIONS'
+ ,p_first_item => 'NO_FIRST_ITEM'
+ ,p_include_apex_css_js_yn => 'Y'
+ ,p_autocomplete_on_off => 'ON'
+ ,p_javascript_code => 
+'var htmldb_delete_message=''"DELETE_CONFIRM_MSG"'';'||unistr('\000a')||
+''||unistr('\000a')||
+'function formatta(numero) {'||unistr('\000a')||
+'  $(numero).parseNumber({format:"########0.00", locale:"de"});'||unistr('\000a')||
+'  $(numero).formatNumber({format:"########0.00", locale:"de"});'||unistr('\000a')||
+'}'||unistr('\000a')||
+''
+ ,p_page_is_public_y_n => 'N'
+ ,p_protection_level => 'N'
+ ,p_cache_page_yn => 'N'
+ ,p_last_updated_by => 'FFERRANTE'
+ ,p_last_upd_yyyymmddhh24miss => '20211007162618'
+  );
+null;
+ 
+end;
+/
+
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 6130189306972251546 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 25,
+  p_plug_name=> 'Riepilogo partite infragruppo ',
+  p_region_name=>'',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 10,
+  p_plug_display_column=> 1,
+  p_plug_display_point=> 'AFTER_SHOW_ITEMS',
+  p_plug_source=> s,
+  p_plug_source_type=> 'STATIC_TEXT',
+  p_translate_title=> 'Y',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'QUERY_COLUMNS',
+  p_plug_query_num_rows => 15,
+  p_plug_query_num_rows_type => 'NEXT_PREVIOUS_LINKS',
+  p_plug_query_row_count_max => 500,
+  p_plug_query_show_nulls_as => ' - ',
+  p_plug_display_condition_type => '',
+  p_pagination_display_position=>'BOTTOM_RIGHT',
+  p_plug_customized=>'0',
+  p_plug_caching=> 'NOT_CACHED',
+  p_plug_comment=> '');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s:=s||'select '||unistr('\000a')||
+'"ROWID",'||unistr('\000a')||
+'"ANNO",'||unistr('\000a')||
+'"ID_ENTE",'||unistr('\000a')||
+'"ID_INFRA",'||unistr('\000a')||
+'"ID_CONTO",'||unistr('\000a')||
+'"IMPORTO_ORIGINALE",'||unistr('\000a')||
+'"NOTE"'||unistr('\000a')||
+'from "#OWNER#"."CONS_INFRAGRUPPO"'||unistr('\000a')||
+'where id_ente = :P25_ente and'||unistr('\000a')||
+'anno=:p25_anno'||unistr('\000a')||
+'';
+
+wwv_flow_api.create_report_region (
+  p_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 25,
+  p_name=> 'Dati infragruppo',
+  p_region_name=>'',
+  p_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_display_sequence=> 15,
+  p_display_column=> 1,
+  p_display_point=> 'AFTER_SHOW_ITEMS',
+  p_source=> s,
+  p_source_type=> 'UPDATABLE_SQL_QUERY',
+  p_display_when_condition=> 'p25_anno',
+  p_display_condition_type=> 'ITEM_IS_NOT_NULL',
+  p_plug_caching=> 'NOT_CACHED',
+  p_customized=> '0',
+  p_translate_title=> 'Y',
+  p_ajax_enabled=> 'N',
+  p_query_row_template=> 10503164963186986906+ wwv_flow_api.g_id_offset,
+  p_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_query_num_rows=> '50',
+  p_query_options=> 'DERIVED_REPORT_COLUMNS',
+  p_query_show_nulls_as=> '(nullo)',
+  p_query_break_cols=> '0',
+  p_query_no_data_found=> 'Nessun dato trovato.',
+  p_query_num_rows_type=> 'ROW_RANGES_IN_SELECT_LIST',
+  p_query_row_count_max=> '500',
+  p_pagination_display_position=> 'BOTTOM_RIGHT',
+  p_break_type_flag=> 'DEFAULT_BREAK_FORMATTING',
+  p_csv_output=> 'Y',
+  p_csv_output_link_text=> 'Esporta dati',
+  p_query_asc_image=> 'apex/builder/dup.gif',
+  p_query_asc_image_attr=> 'width="16" height="16" alt="" ',
+  p_query_desc_image=> 'apex/builder/ddown.gif',
+  p_query_desc_image_attr=> 'width="16" height="16" alt="" ',
+  p_plug_query_exp_filename=> 'partite_infragruppo',
+  p_plug_query_strip_html=> 'Y',
+  p_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194302549251633 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 1,
+  p_form_element_id=> null,
+  p_column_alias=> 'CHECK$01',
+  p_column_display_sequence=> 1,
+  p_column_heading=> 'Seleziona riga',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'CHECKBOX',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_derived_column=> 'Y',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194428909251655 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 2,
+  p_form_element_id=> null,
+  p_column_alias=> 'ROWID',
+  p_column_display_sequence=> 2,
+  p_column_heading=> 'Rowid',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'Y',
+  p_display_as=>'WITHOUT_MODIFICATION',
+  p_column_width=> '16',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_ref_schema=> 'REGBAS_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'ROWID',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194531944251655 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 3,
+  p_form_element_id=> null,
+  p_column_alias=> 'ANNO',
+  p_column_display_sequence=> 3,
+  p_column_heading=> 'Anno',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'LEFT',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'Y',
+  p_display_as=>'HIDDEN',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '16',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'REGBAS_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'ANNO',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194629648251655 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 4,
+  p_form_element_id=> null,
+  p_column_alias=> 'ID_ENTE',
+  p_column_display_sequence=> 4,
+  p_column_heading=> 'Id Ente',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'LEFT',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'Y',
+  p_display_as=>'HIDDEN',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '16',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'REGBAS_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'ID_ENTE',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194722898251664 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 5,
+  p_form_element_id=> null,
+  p_column_alias=> 'ID_INFRA',
+  p_column_display_sequence=> 5,
+  p_column_heading=> 'Ente/Azienda',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'LEFT',
+  p_default_sort_column_sequence=>1,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'SELECT_LIST_FROM_QUERY',
+  p_inline_lov=> 'select denominazione,id'||unistr('\000a')||
+'from cons_anagrafica'||unistr('\000a')||
+'where id<>:P4_ENTE'||unistr('\000a')||
+'order by 1',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '16',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'REGBAS_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'ID_INFRA',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194829265251664 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 6,
+  p_form_element_id=> null,
+  p_column_alias=> 'ID_CONTO',
+  p_column_display_sequence=> 6,
+  p_column_heading=> 'Conto',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>2,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'POPUPKEY_QUERY',
+  p_inline_lov=> 'select p.codice_conto||'' ''||p.descrizione descr,p.id'||unistr('\000a')||
+'from cons_piacee p'||unistr('\000a')||
+'where p.anno = :P4_ANNO'||unistr('\000a')||
+'and p.ENTE_SOCIETA = ''E'''||unistr('\000a')||
+'and nvl(p.AGGREGATO,''X'') = ''N'''||unistr('\000a')||
+'order by decode(p.tipo,''A'',1,''P'',2,''CO'',3,99),p.ORDINAMENTO_STAMPA',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '40',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'SIC_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'ID_CONTO',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130194931118251664 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 7,
+  p_form_element_id=> null,
+  p_column_alias=> 'IMPORTO_ORIGINALE',
+  p_column_display_sequence=> 7,
+  p_column_heading=> 'Importo',
+  p_use_as_row_header=> 'N',
+  p_column_format=> '999G999G999G999G990D00',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'TEXT',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '12',
+  p_cattributes=> 'style="text-align:right;"',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'SIC_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'IMPORTO_ORIGINALE',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 6130195024024251664 + wwv_flow_api.g_id_offset,
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 8,
+  p_form_element_id=> null,
+  p_column_alias=> 'NOTE',
+  p_column_display_sequence=> 8,
+  p_column_heading=> 'Note',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'TEXTAREA',
+  p_lov_show_nulls=> 'NO',
+  p_column_width=> '40',
+  p_column_height=> '1',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'SIC_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_INFRAGRUPPO',
+  p_ref_column_name=> 'NOTE',
+  p_column_comment=>'');
+end;
+/
+ 
+begin
+ 
+wwv_flow_api.create_page_button(
+  p_id             => 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_flow_id        => wwv_flow.g_flow_id,
+  p_flow_step_id   => 25,
+  p_button_sequence=> 30,
+  p_button_plug_id => 6130190131216251623+wwv_flow_api.g_id_offset,
+  p_button_name    => 'SUBMIT',
+  p_button_action  => 'SUBMIT',
+  p_button_image   => 'template:'||to_char(10503158740789986868+wwv_flow_api.g_id_offset),
+  p_button_is_hot=>'N',
+  p_button_image_alt=> 'Salva',
+  p_button_position=> 'REGION_TEMPLATE_CHANGE',
+  p_button_alignment=> 'RIGHT',
+  p_button_redirect_url=> '',
+  p_button_execute_validations=>'Y',
+  p_required_patch => null + wwv_flow_api.g_id_offset);
+ 
+wwv_flow_api.create_page_button(
+  p_id             => 6130195323533251713 + wwv_flow_api.g_id_offset,
+  p_flow_id        => wwv_flow.g_flow_id,
+  p_flow_step_id   => 25,
+  p_button_sequence=> 10,
+  p_button_plug_id => 6130190131216251623+wwv_flow_api.g_id_offset,
+  p_button_name    => 'CANCEL',
+  p_button_action  => 'REDIRECT_PAGE',
+  p_button_image   => 'template:'||to_char(10503158740789986868+wwv_flow_api.g_id_offset),
+  p_button_is_hot=>'N',
+  p_button_image_alt=> 'Annulla',
+  p_button_position=> 'REGION_TEMPLATE_CLOSE',
+  p_button_alignment=> 'RIGHT',
+  p_button_redirect_url=> 'f?p=&APP_ID.:25:&SESSION.::&DEBUG.:::',
+  p_required_patch => null + wwv_flow_api.g_id_offset);
+ 
+wwv_flow_api.create_page_button(
+  p_id             => 6130195523690251714 + wwv_flow_api.g_id_offset,
+  p_flow_id        => wwv_flow.g_flow_id,
+  p_flow_step_id   => 25,
+  p_button_sequence=> 20,
+  p_button_plug_id => 6130190131216251623+wwv_flow_api.g_id_offset,
+  p_button_name    => 'MULTI_ROW_DELETE',
+  p_button_action  => 'REDIRECT_URL',
+  p_button_image   => 'template:'||to_char(10503158740789986868+wwv_flow_api.g_id_offset),
+  p_button_is_hot=>'N',
+  p_button_image_alt=> 'Elimina',
+  p_button_position=> 'REGION_TEMPLATE_DELETE',
+  p_button_alignment=> 'RIGHT',
+  p_button_redirect_url=> 'javascript:apex.confirm(htmldb_delete_message,''MULTI_ROW_DELETE'');',
+  p_button_execute_validations=>'N',
+  p_required_patch => null + wwv_flow_api.g_id_offset);
+ 
+wwv_flow_api.create_page_button(
+  p_id             => 6130195702417251714 + wwv_flow_api.g_id_offset,
+  p_flow_id        => wwv_flow.g_flow_id,
+  p_flow_step_id   => 25,
+  p_button_sequence=> 40,
+  p_button_plug_id => 6130190131216251623+wwv_flow_api.g_id_offset,
+  p_button_name    => 'ADD',
+  p_button_action  => 'REDIRECT_URL',
+  p_button_image   => 'template:'||to_char(10503158740789986868+wwv_flow_api.g_id_offset),
+  p_button_is_hot=>'N',
+  p_button_image_alt=> 'Aggiunge riga',
+  p_button_position=> 'TOP_AND_BOTTOM',
+  p_button_alignment=> 'RIGHT',
+  p_button_redirect_url=> 'javascript:addRow();',
+  p_button_execute_validations=>'N',
+  p_required_patch => null + wwv_flow_api.g_id_offset);
+ 
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_branch(
+  p_id=>6130200201707251749 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 25,
+  p_branch_action=> 'f?p=&APP_ID.:25:&SESSION.&success_msg=#SUCCESS_MSG#',
+  p_branch_point=> 'AFTER_PROCESSING',
+  p_branch_type=> 'REDIRECT_URL',
+  p_branch_sequence=> 1,
+  p_save_state_before_branch_yn=>'N',
+  p_branch_comment=> '');
+ 
+wwv_flow_api.create_page_branch(
+  p_id=>6130200417909251754 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 25,
+  p_branch_action=> 'f?p=&APP_ID.:25:&SESSION.&success_msg=#SUCCESS_MSG#',
+  p_branch_point=> 'AFTER_PROCESSING',
+  p_branch_type=> 'REDIRECT_URL',
+  p_branch_sequence=> 1,
+  p_save_state_before_branch_yn=>'N',
+  p_branch_comment=> '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6130189527287251583 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 25,
+  p_name=>'P25_VISUALIZZA',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 48,
+  p_item_plug_id => 6130189306972251546+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'NO',
+  p_prompt=>'Visualizza partite',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'BUTTON',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> null,
+  p_cMaxlength=> 2000,
+  p_cHeight=> null,
+  p_tag_attributes  => 'template:'||to_char(10503158740789986868 + wwv_flow_api.g_id_offset),
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'N',
+  p_button_execute_validations=>'N',
+  p_button_action => 'SUBMIT',
+  p_button_is_hot=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6130189703915251618 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 25,
+  p_name=>'P25_ENTE',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 20,
+  p_item_plug_id => 6130189306972251546+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Ente',
+  p_source=>'P101_ente',
+  p_source_type=> 'ITEM',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select a.denominazione,a.id'||unistr('\000a')||
+'from cons_anagrafica a'||unistr('\000a')||
+'where :P101_ente=1 or'||unistr('\000a')||
+'(a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))'||unistr('\000a')||
+'order by a.denominazione',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'YES',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'NO',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'NONE',
+  p_attribute_02 => 'N',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>6130189915458251620 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 25,
+  p_name=>'P25_ANNO',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 30,
+  p_item_plug_id => 6130189306972251546+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Anno bilancio',
+  p_source_type=> 'QUERY',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select d.anno,d.anno p_anno'||unistr('\000a')||
+'from cons_dati_generali d'||unistr('\000a')||
+',cons_utenti u'||unistr('\000a')||
+'where (nvl(d.attivo,''N'') = ''S'''||unistr('\000a')||
+'and d.data_f_carica is null'||unistr('\000a')||
+'and u.id_ente <> 1'||unistr('\000a')||
+'and upper(u.user_name) = upper(:app_user) '||unistr('\000a')||
+')'||unistr('\000a')||
+'OR'||unistr('\000a')||
+'(nvl(d.attivo,''N'') = ''S'''||unistr('\000a')||
+'and u.id_ente = 1'||unistr('\000a')||
+'and upper(u.user_name) = upper(:app_user) '||unistr('\000a')||
+') -- solo per Regione',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 4,
+  p_cMaxlength=> 4,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'NONE',
+  p_attribute_02 => 'N',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130196019306251717 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ANNO not null',
+  p_validation_sequence=> 20,
+  p_validation => 'ANNO',
+  p_validation_type => 'ITEM_NOT_NULL',
+  p_error_message => 'Specificare un valore per #COLUMN_HEADER#.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ANNO',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130196201783251725 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ANNO must be numeric',
+  p_validation_sequence=> 20,
+  p_validation => 'ANNO',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ANNO',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130196408715251726 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ID_ENTE not null',
+  p_validation_sequence=> 30,
+  p_validation => 'ID_ENTE',
+  p_validation_type => 'ITEM_NOT_NULL',
+  p_error_message => 'Specificare un valore per #COLUMN_HEADER#.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ID_ENTE',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130196619613251726 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ID_ENTE must be numeric',
+  p_validation_sequence=> 30,
+  p_validation => 'ID_ENTE',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ID_ENTE',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130196802597251726 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ID_INFRA not null',
+  p_validation_sequence=> 40,
+  p_validation => 'ID_INFRA',
+  p_validation_type => 'ITEM_NOT_NULL',
+  p_error_message => 'Specificare un valore per #COLUMN_HEADER#.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ID_INFRA',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130197006188251726 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ID_INFRA must be numeric',
+  p_validation_sequence=> 40,
+  p_validation => 'ID_INFRA',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ID_INFRA',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130197227927251726 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'CREDITI must be numeric',
+  p_validation_sequence=> 50,
+  p_validation => 'CREDITI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'CREDITI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130197414951251727 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'DEBITI must be numeric',
+  p_validation_sequence=> 60,
+  p_validation => 'DEBITI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'DEBITI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130197624818251727 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'RICAVI must be numeric',
+  p_validation_sequence=> 70,
+  p_validation => 'RICAVI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'RICAVI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130197810460251727 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'COSTI must be numeric',
+  p_validation_sequence=> 80,
+  p_validation => 'COSTI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'COSTI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130198012003251728 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'INTERESSI_ROYAL must be numeric',
+  p_validation_sequence=> 90,
+  p_validation => 'INTERESSI_ROYAL',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'INTERESSI_ROYAL',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130198206026251728 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'CONTRIBUTI must be numeric',
+  p_validation_sequence=> 100,
+  p_validation => 'CONTRIBUTI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'CONTRIBUTI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130198431452251728 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'INTERESSI must be numeric',
+  p_validation_sequence=> 110,
+  p_validation => 'INTERESSI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'INTERESSI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130198602618251729 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'ACQ_CESPITI must be numeric',
+  p_validation_sequence=> 120,
+  p_validation => 'ACQ_CESPITI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'ACQ_CESPITI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130198815763251729 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'VEN_CESPITI must be numeric',
+  p_validation_sequence=> 130,
+  p_validation => 'VEN_CESPITI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'VEN_CESPITI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130199022369251729 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'CONC_CRED_PREST must be numeric',
+  p_validation_sequence=> 140,
+  p_validation => 'CONC_CRED_PREST',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'CONC_CRED_PREST',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130199224878251729 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'UTILE_PERD_INFRA must be numeric',
+  p_validation_sequence=> 150,
+  p_validation => 'UTILE_PERD_INFRA',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'UTILE_PERD_INFRA',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130199403810251732 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'DIVIDENDI_DISAVANZI must be numeric',
+  p_validation_sequence=> 160,
+  p_validation => 'DIVIDENDI_DISAVANZI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'DIVIDENDI_DISAVANZI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 6130199613875251733 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_tabular_form_region_id => 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_validation_name => 'TRIBUTI must be numeric',
+  p_validation_sequence=> 170,
+  p_validation => 'TRIBUTI',
+  p_validation_type => 'ITEM_IS_NUMERIC',
+  p_error_message => 'Il valore di #COLUMN_HEADER# deve essere numerico.',
+  p_when_button_pressed=> 6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_exec_cond_for_each_row=> 'N',
+  p_only_for_changed_rows=> 'Y',
+  p_associated_column=> 'TRIBUTI',
+  p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'#OWNER#:CONS_INFRAGRUPPO:ROWID';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6130199711535251733 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_process_sequence=> 10,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_process_type=> 'MULTI_ROW_UPDATE',
+  p_process_name=> 'ApplyMRU',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_process_success_message=> '#MRU_COUNT# riga/e aggiornata/e, #MRI_COUNT# riga/e inserita/e.',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'#OWNER#:CONS_INFRAGRUPPO:ROWID';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6130199929076251740 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_process_sequence=> 20,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_region_id=> 6130190131216251623 + wwv_flow_api.g_id_offset,
+  p_process_type=> 'MULTI_ROW_DELETE',
+  p_process_name=> 'ApplyMRD',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when=>'MULTI_ROW_DELETE',
+  p_process_when_type=>'REQUEST_EQUALS_CONDITION',
+  p_process_success_message=> '#MRD_COUNT# riga/e eliminata/e.',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare '||unistr('\000a')||
+'importo_bilancio number := 0;'||unistr('\000a')||
+'desc_conto varchar2(2000);'||unistr('\000a')||
+''||unistr('\000a')||
+'cursor infra is'||unistr('\000a')||
+'select id_conto,nvl(sum(nvl(importo_originale,0)),0) imp_infra'||unistr('\000a')||
+'from cons_infragruppo'||unistr('\000a')||
+'where anno = :p25_anno'||unistr('\000a')||
+'and id_ente = :p25_ente'||unistr('\000a')||
+'group by id_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+' for i in infra loop'||unistr('\000a')||
+'    select nvl(importo,0) into importo_bilancio'||unistr('\000a')||
+'    from cons_piacee_importi'||unistr('\000a')||
+'    where anno = :p25_anno'||unistr('\000a')||
+'    and id_ente = :p25_ente'||unistr('\000a')||
+'    an';
+
+p:=p||'d codice_conto = i.id_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'        '||unistr('\000a')||
+'  if (importo_bilancio-i.imp_infra) < 0'||unistr('\000a')||
+'   then'||unistr('\000a')||
+'   Begin'||unistr('\000a')||
+'    select codice_conto|| '' - ''||descrizione into desc_conto'||unistr('\000a')||
+'    from cons_piacee'||unistr('\000a')||
+'    where anno = :P25_anno'||unistr('\000a')||
+'    and id = i.id_conto;'||unistr('\000a')||
+'  exception when no_data_found then desc_conto := ''Conto non definibile'';  '||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'   RAISE_APPLICATION_ERROR( -20001, ''L''''importo di infragruppo inserito sul conto ''||d';
+
+p:=p||'esc_conto||'' non e'''' compatibile con la corrispondente voce di bilancio. Verificare!'' );'||unistr('\000a')||
+'  end if;'||unistr('\000a')||
+''||unistr('\000a')||
+' end loop;'||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6131314329285275130 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_process_sequence=> 30,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'controlla_infra',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> 'Infragruppo inserite con successo',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare '||unistr('\000a')||
+'importo_bilancio number := 0;'||unistr('\000a')||
+'desc_conto varchar2(2000);'||unistr('\000a')||
+''||unistr('\000a')||
+'cursor infra is'||unistr('\000a')||
+'select id_conto,nvl(sum(nvl(importo_originale,0)),0) imp_infra'||unistr('\000a')||
+'from cons_infragruppo'||unistr('\000a')||
+'where anno = :p4_anno'||unistr('\000a')||
+'and id_ente = :p4_ente'||unistr('\000a')||
+'group by id_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'begin'||unistr('\000a')||
+' for i in infra loop'||unistr('\000a')||
+'    select nvl(importo,0) into importo_bilancio'||unistr('\000a')||
+'    from cons_piacee_importi'||unistr('\000a')||
+'    where anno = :P4_anno'||unistr('\000a')||
+'    and id_ente = :P4_ente'||unistr('\000a')||
+'    and co';
+
+p:=p||'dice_conto = i.id_conto;'||unistr('\000a')||
+''||unistr('\000a')||
+'        '||unistr('\000a')||
+'  if (importo_bilancio-i.imp_infra) < 0'||unistr('\000a')||
+'   then'||unistr('\000a')||
+'   Begin'||unistr('\000a')||
+'    select codice_conto|| '' - ''||descrizione into desc_conto'||unistr('\000a')||
+'    from cons_piacee'||unistr('\000a')||
+'    where anno = :P4_anno'||unistr('\000a')||
+'    and id = i.id_conto;'||unistr('\000a')||
+'  exception when no_data_found then desc_conto := ''Conto non definibile'';  '||unistr('\000a')||
+'   end;'||unistr('\000a')||
+'   RAISE_APPLICATION_ERROR( -20001, ''L''''importo di infragruppo inserito sul conto ''||desc_c';
+
+p:=p||'onto||'' non e'''' compatibile con la corrispondente voce di bilancio. Verificare!'' );'||unistr('\000a')||
+'  end if;'||unistr('\000a')||
+''||unistr('\000a')||
+' end loop;'||unistr('\000a')||
+'end;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 6131522625541453844 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 25,
+  p_process_sequence=> 40,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'controlla_infra',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>6130195104897251664 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> 'Partite infragruppo inserite correttamente',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+---------------------------------------
+-- ...updatable report columns for page 25
+--
+ 
+begin
+ 
+null;
+end;
+null;
+ 
+end;
+/
+
+ 
+--application/pages/page_00026
+prompt  ...PAGE 26: Documenti allegati
+--
+ 
+begin
+ 
+wwv_flow_api.create_page (
+  p_flow_id => wwv_flow.g_flow_id
+ ,p_id => 26
+ ,p_name => 'Documenti allegati'
+ ,p_step_title => 'Documenti allegati'
+ ,p_step_sub_title => 'Documenti allegati'
+ ,p_step_sub_title_type => 'TEXT_WITH_SUBSTITUTIONS'
+ ,p_first_item => 'NO_FIRST_ITEM'
+ ,p_include_apex_css_js_yn => 'Y'
+ ,p_cache_page_yn => 'N'
+ ,p_last_updated_by => 'FFERRANTE'
+ ,p_last_upd_yyyymmddhh24miss => '20210310162454'
+  );
+null;
+ 
+end;
+/
+
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s:=s||'select d.ANNO,a.DENOMINAZIONE ENTE_AZIENDA,t.descrizione TIPO_DOC ,d.DESCRIZIONE,d.NOME_FILE,'||unistr('\000a')||
+'''f?p=&APP_ID.:218:&SESSION.::&DEBUG.:218:P218_NOME_FILE,P218_ALF:''||d.codice||d.nome_file||'',N'' visualizza'||unistr('\000a')||
+'from cons_ana_doc d'||unistr('\000a')||
+',cons_anagrafica a'||unistr('\000a')||
+',cons_tipi_doc_allegati t'||unistr('\000a')||
+'where d.ID_ANA = :p26_ente --decode(:P101_ENTE,''1'',d.ID_ANA,:p26_ente)'||unistr('\000a')||
+'and d.anno = :p26_anno'||unistr('\000a')||
+'--and d.tipo_doc = :p26_tipo_doc'||unistr('\000a')||
+'and a.i';
+
+s:=s||'d = d.id_ana'||unistr('\000a')||
+'and t.id = d.tipo_doc'||unistr('\000a')||
+'';
+
+wwv_flow_api.create_report_region (
+  p_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 26,
+  p_name=> 'Documenti ',
+  p_region_name=>'',
+  p_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_display_sequence=> 10,
+  p_display_column=> 1,
+  p_display_point=> 'AFTER_SHOW_ITEMS',
+  p_source=> s,
+  p_source_type=> 'SQL_QUERY',
+  p_display_when_condition=> 'if :p26_progr is not null and'||unistr('\000a')||
+'   (:p168_ufficio<>''71AA'' or'||unistr('\000a')||
+'    apex_procedure.getIdUtente(:APP_USER) in (1683,1817,1000)) then'||unistr('\000a')||
+'   return true;'||unistr('\000a')||
+'else'||unistr('\000a')||
+'   return false;'||unistr('\000a')||
+'end if;',
+  p_plug_caching=> 'NOT_CACHED',
+  p_customized=> '0',
+  p_translate_title=> 'Y',
+  p_ajax_enabled=> 'Y',
+  p_query_row_template=> 10503164963186986906+ wwv_flow_api.g_id_offset,
+  p_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_query_num_rows=> '15',
+  p_query_options=> 'DERIVED_REPORT_COLUMNS',
+  p_query_show_nulls_as=> ' - ',
+  p_query_break_cols=> '0',
+  p_query_no_data_found=> 'nessun dato trovato',
+  p_query_num_rows_type=> 'NEXT_PREVIOUS_LINKS',
+  p_query_row_count_max=> '500',
+  p_pagination_display_position=> 'BOTTOM_RIGHT',
+  p_break_type_flag=> 'DEFAULT_BREAK_FORMATTING',
+  p_csv_output=> 'N',
+  p_query_asc_image=> 'apex/builder/dup.gif',
+  p_query_asc_image_attr=> 'width="16" height="16" alt="" ',
+  p_query_desc_image=> 'apex/builder/ddown.gif',
+  p_query_desc_image_attr=> 'width="16" height="16" alt="" ',
+  p_plug_query_strip_html=> 'Y',
+  p_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5885326530600029798 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 1,
+  p_form_element_id=> null,
+  p_column_alias=> 'ANNO',
+  p_column_display_sequence=> 4,
+  p_column_heading=> 'Anno',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'ESCAPE_SC',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5885326609476029806 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 2,
+  p_form_element_id=> null,
+  p_column_alias=> 'ENTE_AZIENDA',
+  p_column_display_sequence=> 5,
+  p_column_heading=> 'Ente Azienda',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'ESCAPE_SC',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5885326707208029806 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 3,
+  p_form_element_id=> null,
+  p_column_alias=> 'TIPO_DOC',
+  p_column_display_sequence=> 6,
+  p_column_heading=> 'Tipo Doc',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'ESCAPE_SC',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5883289002958458309 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 4,
+  p_form_element_id=> null,
+  p_column_alias=> 'DESCRIZIONE',
+  p_column_display_sequence=> 1,
+  p_column_heading=> 'DESCRIZIONE',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'ESCAPE_SC',
+  p_lov_show_nulls=> 'NO',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5883289131757458309 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 5,
+  p_form_element_id=> null,
+  p_column_alias=> 'NOME_FILE',
+  p_column_display_sequence=> 2,
+  p_column_heading=> 'NOME_FILE',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'N',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'Y',
+  p_display_as=>'ESCAPE_SC',
+  p_lov_show_nulls=> 'NO',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 5883289219886458309 + wwv_flow_api.g_id_offset,
+  p_region_id=> 5883288628475458275 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 6,
+  p_form_element_id=> null,
+  p_column_alias=> 'VISUALIZZA',
+  p_column_display_sequence=> 3,
+  p_column_heading=> 'Visualizza',
+  p_use_as_row_header=> 'N',
+  p_column_link=>'#VISUALIZZA#',
+  p_column_linktext=>'<img src="#IMAGE_PREFIX#magnifying_glass_white_bg.gif" alt="">',
+  p_column_link_attr=>'target="_blank" title="Visualizza"',
+  p_column_alignment=>'CENTER',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'WITHOUT_MODIFICATION',
+  p_lov_show_nulls=> 'NO',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_include_in_export=> 'Y',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+s := null;
+wwv_flow_api.create_page_plug (
+  p_id=> 5883501824971053908 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_page_id=> 26,
+  p_plug_name=> 'Parametri',
+  p_region_name=>'',
+  p_escape_on_http_output=>'Y',
+  p_plug_template=> 10503161367457986890+ wwv_flow_api.g_id_offset,
+  p_plug_display_sequence=> 5,
+  p_plug_display_column=> 1,
+  p_plug_display_point=> 'AFTER_SHOW_ITEMS',
+  p_plug_source=> s,
+  p_plug_source_type=> 'STATIC_TEXT',
+  p_plug_query_row_template=> 1,
+  p_plug_query_headings_type=> 'COLON_DELMITED_LIST',
+  p_plug_query_row_count_max => 500,
+  p_plug_display_condition_type => '',
+  p_plug_caching=> 'NOT_CACHED',
+  p_plug_comment=> '');
+end;
+/
+ 
+begin
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+null;
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883289314928458311 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_FILE',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 20,
+  p_item_plug_id => 5883288628475458275+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'<br>&nbsp&nbsp&nbsp&nbspDocumento (PDF)',
+  p_pre_element_text=>'&nbsp&nbsp&nbsp&nbsp',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_FILE',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'WWV_FLOW_FILES',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883289505115458338 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_INVIA',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 30,
+  p_item_plug_id => 5883288628475458275+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> '',
+  p_item_default=> 'P26_INVIA',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Allega',
+  p_source=>'P26_INVIA',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'BUTTON',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> null,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_tag_attributes  => 'template:'||to_char(10503158740789986868 + wwv_flow_api.g_id_offset),
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'RIGHT',
+  p_field_alignment=> 'CENTER',
+  p_is_persistent=> 'Y',
+  p_button_execute_validations=>'Y',
+  p_button_action => 'SUBMIT',
+  p_button_is_hot=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883289700715458340 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_DOC_CANC',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 520,
+  p_item_plug_id => 5883288628475458275+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_HIDDEN',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> null,
+  p_cMaxlength=> 4000,
+  p_cHeight=> null,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'Y',
+  p_attribute_01 => 'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883289920975458340 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_DOC_TRASP',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 530,
+  p_item_plug_id => 5883288628475458275+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_HIDDEN',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> null,
+  p_cMaxlength=> 4000,
+  p_cHeight=> null,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'LEFT',
+  p_field_alignment=> 'LEFT',
+  p_is_persistent=> 'Y',
+  p_attribute_01 => 'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883290130323458340 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_DESCR_FILE',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 10,
+  p_item_plug_id => 5883288628475458275+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'<br>Descrizione',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_TEXT_FIELD',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'YES',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 2,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'N',
+  p_attribute_02 => 'N',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883594810473078077 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_ENTE',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 5,
+  p_item_plug_id => 5883501824971053908+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Ente',
+  p_source=>'P101_ENTE',
+  p_source_type=> 'ITEM',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select a.denominazione,a.id'||unistr('\000a')||
+'from cons_anagrafica a'||unistr('\000a')||
+'where :P101_ente=1 or'||unistr('\000a')||
+'(a.id in (select id_ente from cons_utenti_enti where user_id = :P101_codice))'||unistr('\000a')||
+'order by a.denominazione',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'YES',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'NO',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'SUBMIT',
+  p_attribute_03 => 'Y',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5883692914198098155 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_ANNO',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> false,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 9,
+  p_item_plug_id => 5883501824971053908+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Anno',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select d.anno,d.anno p_anno'||unistr('\000a')||
+'from cons_dati_generali d'||unistr('\000a')||
+'--,cons_utenti u'||unistr('\000a')||
+'--where (nvl(d.attivo,''N'') = ''S'''||unistr('\000a')||
+'--and d.data_f_carica is null'||unistr('\000a')||
+'--and u.id_ente <> 1'||unistr('\000a')||
+'--and upper(u.user_name) = upper(:app_user) '||unistr('\000a')||
+'--)'||unistr('\000a')||
+'--OR'||unistr('\000a')||
+'--(nvl(d.attivo,''N'') = ''S'''||unistr('\000a')||
+'--and u.id_ente = 1'||unistr('\000a')||
+'--and upper(u.user_name) = upper(:app_user) '||unistr('\000a')||
+'--) -- solo per Regione'||unistr('\000a')||
+'order by d.anno desc',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'SUBMIT',
+  p_attribute_03 => 'Y',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+declare
+    h varchar2(32767) := null;
+begin
+wwv_flow_api.create_page_item(
+  p_id=>5885075028672840009 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id=> 26,
+  p_name=>'P26_TIPO_DOC',
+  p_data_type=> 'VARCHAR',
+  p_is_required=> true,
+  p_accept_processing=> 'REPLACE_EXISTING',
+  p_item_sequence=> 8,
+  p_item_plug_id => 5883501824971053908+wwv_flow_api.g_id_offset,
+  p_use_cache_before_default=> 'YES',
+  p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
+  p_prompt=>'Tipo Documento',
+  p_source_type=> 'STATIC',
+  p_display_as=> 'NATIVE_SELECT_LIST',
+  p_lov=> 'select descrizione,id'||unistr('\000a')||
+'from cons_tipi_doc_allegati',
+  p_lov_display_null=> 'NO',
+  p_lov_translated=> 'N',
+  p_cSize=> 30,
+  p_cMaxlength=> 4000,
+  p_cHeight=> 1,
+  p_cAttributes=> 'nowrap="nowrap"',
+  p_begin_on_new_line=> 'NO',
+  p_begin_on_new_field=> 'YES',
+  p_colspan=> 1,
+  p_rowspan=> 1,
+  p_label_alignment=> 'ABOVE',
+  p_field_alignment=> 'LEFT-CENTER',
+  p_field_template=> 10503165657792986910+wwv_flow_api.g_id_offset,
+  p_is_persistent=> 'Y',
+  p_lov_display_extra=>'YES',
+  p_protection_level => 'N',
+  p_escape_on_http_output => 'Y',
+  p_attribute_01 => 'NONE',
+  p_attribute_02 => 'N',
+  p_show_quick_picks=>'N',
+  p_item_comment => '');
+ 
+ 
+end;
+/
+
+ 
+begin
+ 
+wwv_flow_api.create_page_validation(
+  p_id => 5883294408269458348 + wwv_flow_api.g_id_offset,
+  p_flow_id => wwv_flow.g_flow_id,
+  p_flow_step_id => 26,
+  p_tabular_form_region_id => null + wwv_flow_api.g_id_offset,
+  p_validation_name => 'inserisci',
+  p_validation_sequence=> 10,
+  p_validation => ':P26_FILE IS NOT NULL AND :P26_DESCR_FILE IS NOT NULL AND :P26_ENTE IS NOT NULL AND :P26_ANNO IS NOT NULL AND :P26_TIPO_DOC IS NOT NULL',
+  p_validation_type => 'PLSQL_EXPRESSION',
+  p_error_message => 'Inserire Anno, Ente/Azienda, Tipo documento, Descrizione e file',
+  p_always_execute=>'N',
+  p_when_button_pressed=> 5883289505115458338 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_error_display_location=>'INLINE_IN_NOTIFICATION',
+  p_validation_comment=> '');
+ 
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'declare'||unistr('\000a')||
+'  id_doc      number;'||unistr('\000a')||
+'  progr       number;'||unistr('\000a')||
+'  errore      number;'||unistr('\000a')||
+'  file_imp varchar2(2000);'||unistr('\000a')||
+'  wdocumento varchar2(200);'||unistr('\000a')||
+'BEGIN'||unistr('\000a')||
+''||unistr('\000a')||
+'  select doc_seq.nextval'||unistr('\000a')||
+'    into id_doc'||unistr('\000a')||
+'    from dual;'||unistr('\000a')||
+'  select replace(filename,'' '',''_'')'||unistr('\000a')||
+'    into file_imp'||unistr('\000a')||
+'    from wwv_flow_files '||unistr('\000a')||
+'    where name = :p26_file;'||unistr('\000a')||
+''||unistr('\000a')||
+''||unistr('\000a')||
+'wdocumento := CRIPTA_PWD(id_doc||to_char(sysdate,''mi''));'||unistr('\000a')||
+''||unistr('\000a')||
+''||unistr('\000a')||
+'  upload_file_sic(:p26_file,id_doc||wdocu';
+
+p:=p||'mento||substr(file_imp,-4),errore);'||unistr('\000a')||
+'  delete wwv_flow_files where name = :p26_file;'||unistr('\000a')||
+'  if errore is null then'||unistr('\000a')||
+'    insert into cons_ana_doc'||unistr('\000a')||
+'    (CODICE,ANNO,ID_ANA,TIPO_DOC,DESCRIZIONE,CREATO_DA,CREATO_IL,NOME_FILE,FLAG_ALFRESCO)'||unistr('\000a')||
+'     values'||unistr('\000a')||
+'    (id_doc,:p26_anno,:p26_ente,:p26_tipo_doc,:P26_DESCR_FILE,:P101_CODICE,sysdate,wdocumento||substr(file_imp,-4),''N'');'||unistr('\000a')||
+'    :p26_descr_file:=null;'||unistr('\000a')||
+'    :p26_fil';
+
+p:=p||'e:=null;  '||unistr('\000a')||
+'  end if;'||unistr('\000a')||
+''||unistr('\000a')||
+'EXCEPTION'||unistr('\000a')||
+'  WHEN OTHERS THEN'||unistr('\000a')||
+'    RAISE;'||unistr('\000a')||
+'END;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 5883294504492458354 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 26,
+  p_process_sequence=> 10,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'Inserimento documento',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when_button_id=>5883289505115458338 + wwv_flow_api.g_id_offset,
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+declare
+  p varchar2(32767) := null;
+  l_clob clob;
+  l_length number := 1;
+begin
+p:=p||'delete tb_doc_cesp'||unistr('\000a')||
+'  where codice=:P0_COD_INV and'||unistr('\000a')||
+'        progr=:P26_DOC_CANC;';
+
+wwv_flow_api.create_page_process(
+  p_id     => 5883294730675458359 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_flow_step_id => 26,
+  p_process_sequence=> 20,
+  p_process_point=> 'AFTER_SUBMIT',
+  p_process_type=> 'PLSQL',
+  p_process_name=> 'elimina documento',
+  p_process_sql_clob => p, 
+  p_process_error_message=> '',
+  p_error_display_location=> 'INLINE_IN_NOTIFICATION',
+  p_process_when=>'DEL_DOC',
+  p_process_when_type=>'REQUEST_EQUALS_CONDITION',
+  p_only_for_changed_rows=> 'Y',
+  p_process_success_message=> '',
+  p_process_is_stateful_y_n=>'N',
+  p_process_comment=>'');
+end;
+null;
+ 
+end;
+/
+
+ 
+begin
+ 
+---------------------------------------
+-- ...updatable report columns for page 26
+--
+ 
+begin
+ 
+null;
+end;
+null;
+ 
+end;
+/
+
+ 
 --application/pages/page_00050
 prompt  ...PAGE 50: accesso esterno
 --
@@ -27590,7 +30600,7 @@ wwv_flow_api.create_page (
  ,p_cache_page_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20170801164036'
   );
 null;
@@ -28854,8 +31864,8 @@ wwv_flow_api.create_page (
  ,p_cache_by_user_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
- ,p_last_upd_yyyymmddhh24miss => '20180119161556'
+ ,p_last_updated_by => 'FFERRANTE'
+ ,p_last_upd_yyyymmddhh24miss => '20200511164521'
   );
 null;
  
@@ -29566,7 +32576,7 @@ wwv_flow_api.create_page_item(
   p_item_plug_id => 6759227634530093047+wwv_flow_api.g_id_offset,
   p_use_cache_before_default=> 'NO',
   p_item_default_type=> 'STATIC_TEXT_WITH_SUBSTITUTIONS',
-  p_prompt=>'ModalitÃ  Operative',
+  p_prompt=>'Modalita''  Operative',
   p_source=>'HELP_VOCE',
   p_source_type=> 'DB_COLUMN',
   p_display_as=> 'NATIVE_RICH_TEXT_EDITOR',
@@ -30015,7 +33025,7 @@ wwv_flow_api.create_page (
  ,p_javascript_code => 
 'var htmldb_delete_message=''"DELETE_CONFIRM_MSG"'';'
  ,p_cache_page_yn => 'N'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20170801162405'
   );
 null;
@@ -30194,7 +33204,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'ROWID',
   p_column_comment=>'');
@@ -30227,7 +33237,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'CODICE',
   p_column_comment=>'');
@@ -30260,7 +33270,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'RUOLO',
   p_column_comment=>'');
@@ -30294,7 +33304,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'NO',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'LEGGI_SCRIVI',
   p_column_comment=>'');
@@ -30327,7 +33337,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'CODICE_PADRE',
   p_column_comment=>'');
@@ -30360,7 +33370,7 @@ wwv_flow_api.create_report_columns (
   p_pk_col_source=> s,
   p_lov_display_extra=> 'YES',
   p_include_in_export=> 'Y',
-  p_ref_schema=> 'CONFIN',
+  p_ref_schema=> 'GAT2',
   p_ref_table_name=> 'FIN_T_MENU_RUOLI_WEB',
   p_ref_column_name=> 'TITOLO',
   p_column_comment=>'');
@@ -31379,7 +34389,7 @@ wwv_flow_api.create_page (
  ,p_cache_page_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20170801163235'
   );
 null;
@@ -31912,7 +34922,7 @@ wwv_flow_api.create_page (
  ,p_cache_by_user_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20170801163555'
   );
 null;
@@ -34439,7 +37449,7 @@ p:=p||'hen'||unistr('\000a')||
 '      :P218_NOME_FILE:=replace(:P218_NOME_FILE,'' '',''%20'');'||unistr('\000a')||
 '      l_file:=substr(:p218_NOME_FILE,instr(:p218_NOME_FILE,''/'',-1)+1,1000);'||unistr('\000a')||
 ''||unistr('\000a')||
-'      SELECT readfromweb (''http://user:pass@alfresco.regione.basilicata.it:8080/alfresco/cmisbrowser/69cd2d25-0f7d-4b93-835b-bf749c2f4849/root''||:P218_NOME_FILE)'||unistr('\000a')||
+'      SELECT readfromweb (''http://traccia:integra@alfresco.regione.basilicata.it:8080/alfresco/cmisbrowser/69cd2d25-0f7d-4b93-835b-bf749c2f4849/root''||:P218_NOME_FILE)'||unistr('\000a')||
 '      into l_clob'||unistr('\000a')||
 '      FROM DUAL;'||unistr('\000a')||
 ''||unistr('\000a')||
@@ -34546,7 +37556,7 @@ wwv_flow_api.create_page (
  ,p_cache_by_user_yn => 'N'
  ,p_help_text => 
 'No help is available for this page.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20180212122856'
   );
 null;
@@ -35007,7 +38017,7 @@ wwv_flow_api.create_page (
  ,p_help_text => 
 'No help is available for this page.'
  ,p_last_updated_by => 'FFERRANTE'
- ,p_last_upd_yyyymmddhh24miss => '20181125105703'
+ ,p_last_upd_yyyymmddhh24miss => '20211026132955'
   );
 null;
  
@@ -35350,6 +38360,7 @@ s:=s||'select '||unistr('\000a')||
 '"ROWID",'||unistr('\000a')||
 '"ID_ANA",'||unistr('\000a')||
 '"ANNO",'||unistr('\000a')||
+'"GAP_SN",'||unistr('\000a')||
 '"TIPO_CONTABILITA",'||unistr('\000a')||
 '"PERC_PARTECIPAZIONE",'||unistr('\000a')||
 '"QUOTA_PARTECIPAZIONE",'||unistr('\000a')||
@@ -35530,13 +38541,45 @@ declare
 begin
 s := null;
 wwv_flow_api.create_report_columns (
-  p_id=> 3114856023581684404 + wwv_flow_api.g_id_offset,
+  p_id=> 6154347319362531893 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_query_column_id=> 5,
   p_form_element_id=> null,
-  p_column_alias=> 'TIPO_CONTABILITA',
+  p_column_alias=> 'GAP_SN',
   p_column_display_sequence=> 5,
+  p_column_heading=> 'GAP S/N',
+  p_use_as_row_header=> 'N',
+  p_column_alignment=>'LEFT',
+  p_heading_alignment=>'CENTER',
+  p_default_sort_column_sequence=>0,
+  p_disable_sort_column=>'Y',
+  p_sum_column=> 'N',
+  p_hidden_column=> 'N',
+  p_display_as=>'TEXT',
+  p_lov_show_nulls=> 'NO',
+  p_is_required=> false,
+  p_pk_col_source=> s,
+  p_lov_display_extra=> 'YES',
+  p_include_in_export=> 'Y',
+  p_ref_schema=> 'REGBAS_CONSOLIDATO',
+  p_ref_table_name=> 'CONS_ANA_CONTABILE',
+  p_ref_column_name=> 'GAP_SN',
+  p_column_comment=>'');
+end;
+/
+declare
+  s varchar2(32767) := null;
+begin
+s := null;
+wwv_flow_api.create_report_columns (
+  p_id=> 3114856023581684404 + wwv_flow_api.g_id_offset,
+  p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_query_column_id=> 6,
+  p_form_element_id=> null,
+  p_column_alias=> 'TIPO_CONTABILITA',
+  p_column_display_sequence=> 6,
   p_column_heading=> 'Tipo Contabilita',
   p_use_as_row_header=> 'N',
   p_column_alignment=>'LEFT',
@@ -35569,10 +38612,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3132988117518625770 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 6,
+  p_query_column_id=> 7,
   p_form_element_id=> null,
   p_column_alias=> 'PERC_PARTECIPAZIONE',
-  p_column_display_sequence=> 11,
+  p_column_display_sequence=> 12,
   p_column_heading=> 'Perc Partecipazione',
   p_use_as_row_header=> 'N',
   p_column_format=> '990D00',
@@ -35601,10 +38644,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3114856121460684404 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 7,
+  p_query_column_id=> 8,
   p_form_element_id=> null,
   p_column_alias=> 'QUOTA_PARTECIPAZIONE',
-  p_column_display_sequence=> 6,
+  p_column_display_sequence=> 7,
   p_column_heading=> 'Quota Partecipazione',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35636,10 +38679,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3114856206189684404 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 8,
+  p_query_column_id=> 9,
   p_form_element_id=> null,
   p_column_alias=> 'RISULTATO_ECONOMICO',
-  p_column_display_sequence=> 7,
+  p_column_display_sequence=> 8,
   p_column_heading=> 'Risultato Economico',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35671,10 +38714,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3114856326229684404 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 9,
+  p_query_column_id=> 10,
   p_form_element_id=> null,
   p_column_alias=> 'CREDITI_CONTROLLANTE',
-  p_column_display_sequence=> 8,
+  p_column_display_sequence=> 9,
   p_column_heading=> 'Crediti Controllante',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35706,10 +38749,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3114856413571684404 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 10,
+  p_query_column_id=> 11,
   p_form_element_id=> null,
   p_column_alias=> 'DEBITI_CONTROLLANTE',
-  p_column_display_sequence=> 9,
+  p_column_display_sequence=> 10,
   p_column_heading=> 'Debiti Controllante',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35741,10 +38784,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 3114856526441684404 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 11,
+  p_query_column_id=> 12,
   p_form_element_id=> null,
   p_column_alias=> 'SOGLIA_IRRILEVANZA',
-  p_column_display_sequence=> 10,
+  p_column_display_sequence=> 11,
   p_column_heading=> 'Soglia Irrilevanza',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35776,10 +38819,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 4311975606769236712 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 12,
+  p_query_column_id=> 13,
   p_form_element_id=> null,
   p_column_alias=> 'COMPENSI_AMM',
-  p_column_display_sequence=> 12,
+  p_column_display_sequence=> 13,
   p_column_heading=> 'Compensi Amministratori',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35811,10 +38854,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 4311975703414236721 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 13,
+  p_query_column_id=> 14,
   p_form_element_id=> null,
   p_column_alias=> 'COMPENSI_REV',
-  p_column_display_sequence=> 13,
+  p_column_display_sequence=> 14,
   p_column_heading=> 'Compensi Revisori',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35846,10 +38889,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 4311975801780236721 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 14,
+  p_query_column_id=> 15,
   p_form_element_id=> null,
   p_column_alias=> 'CREDITI_OLTRE',
-  p_column_display_sequence=> 14,
+  p_column_display_sequence=> 15,
   p_column_heading=> 'Crediti Oltre',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -35881,10 +38924,10 @@ wwv_flow_api.create_report_columns (
   p_id=> 4311975913493236721 + wwv_flow_api.g_id_offset,
   p_region_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
-  p_query_column_id=> 15,
+  p_query_column_id=> 16,
   p_form_element_id=> null,
   p_column_alias=> 'DEBITI_OLTRE',
-  p_column_display_sequence=> 15,
+  p_column_display_sequence=> 16,
   p_column_heading=> 'Debiti Oltre',
   p_use_as_row_header=> 'N',
   p_column_format=> '999G999G999G999G990D00',
@@ -36828,10 +39871,19 @@ wwv_flow_api.create_region_rpt_cols (
   p_column_comment=> '');
  
 wwv_flow_api.create_region_rpt_cols (
-  p_id     => 3114875429575689525 + wwv_flow_api.g_id_offset,
+  p_id     => 6154326104169531753 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
   p_column_sequence=> 4,
+  p_query_column_name=> 'GAP_SN',
+  p_display_as=> 'TEXT',
+  p_column_comment=> '');
+ 
+wwv_flow_api.create_region_rpt_cols (
+  p_id     => 3114875429575689525 + wwv_flow_api.g_id_offset,
+  p_flow_id=> wwv_flow.g_flow_id,
+  p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
+  p_column_sequence=> 5,
   p_query_column_name=> 'TIPO_CONTABILITA',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36840,7 +39892,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3132987516743625764 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 5,
+  p_column_sequence=> 6,
   p_query_column_name=> 'PERC_PARTECIPAZIONE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36849,7 +39901,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3114875515947689525 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 6,
+  p_column_sequence=> 7,
   p_query_column_name=> 'QUOTA_PARTECIPAZIONE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36858,7 +39910,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3114875614805689525 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 7,
+  p_column_sequence=> 8,
   p_query_column_name=> 'RISULTATO_ECONOMICO',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36867,7 +39919,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3114875726754689525 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 8,
+  p_column_sequence=> 9,
   p_query_column_name=> 'CREDITI_CONTROLLANTE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36876,7 +39928,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3114875801913689525 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 9,
+  p_column_sequence=> 10,
   p_query_column_name=> 'DEBITI_CONTROLLANTE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36885,7 +39937,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 3114875921341689525 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 10,
+  p_column_sequence=> 11,
   p_query_column_name=> 'SOGLIA_IRRILEVANZA',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36894,7 +39946,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 4311975228871236698 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 11,
+  p_column_sequence=> 12,
   p_query_column_name=> 'COMPENSI_AMM',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36903,7 +39955,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 4311975322034236701 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 12,
+  p_column_sequence=> 13,
   p_query_column_name=> 'COMPENSI_REV',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36912,7 +39964,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 4311975414819236701 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 13,
+  p_column_sequence=> 14,
   p_query_column_name=> 'CREDITI_OLTRE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36921,7 +39973,7 @@ wwv_flow_api.create_region_rpt_cols (
   p_id     => 4311975516207236701 + wwv_flow_api.g_id_offset,
   p_flow_id=> wwv_flow.g_flow_id,
   p_plug_id=> 3114855423953684281 + wwv_flow_api.g_id_offset,
-  p_column_sequence=> 14,
+  p_column_sequence=> 15,
   p_query_column_name=> 'DEBITI_OLTRE',
   p_display_as=> 'TEXT',
   p_column_comment=> '');
@@ -36959,7 +40011,7 @@ wwv_flow_api.create_page (
  ,p_cache_page_yn => 'N'
  ,p_help_text => 
 'Guida non disponibile per questa pagina.'
- ,p_last_updated_by => 'CONFIN'
+ ,p_last_updated_by => 'GAT2'
  ,p_last_upd_yyyymmddhh24miss => '20171017145033'
   );
 null;

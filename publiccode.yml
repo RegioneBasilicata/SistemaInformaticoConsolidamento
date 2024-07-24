@@ -1,8 +1,8 @@
-# This repository adheres to the publiccode.yml standard by including this 
+# This repository adheres to the publiccode.yml standard by including this
 # metadata file that makes public software easily discoverable.
 # More info at https://github.com/italia/publiccode.yml
 
-publiccodeYmlVersion: '0.2'
+publiccodeYmlVersion: '0.4.0'
 categories:
   - accounting
   - financial-reporting
@@ -15,13 +15,13 @@ description:
       - Gestione dettagli partecipazione/controllo (importo, %, ecc.).
       - Importazione dati contabili
       - Import bilanci
-      - Import partite infragruppo 
+      - Import partite infragruppo
       - Gestione Infragruppo
       - Immissione manuale partite infragruppo
       - Gestione rettifiche partite Infragruppo
       - Gestione Rettifiche di coerenza e di consolidamento
       - Inserimento e gestione rettifiche di coerenza
-      - Rilevamento automatico differenze di consolidamento 
+      - Rilevamento automatico differenze di consolidamento
       - inserimento automatico rettifiche di consolidamento
       - Verifica quadrature rettifiche
       - Funzione di generazione Bilancio Aggregato (pre Consolidamento)
@@ -30,14 +30,13 @@ description:
       - Reportistica ufficiale
       - Generazione Tabelle da allagare alla Nota Integrativa
       - Generazione file in formato xbrl per invio Banca Dati Amministrazioni Pubbliche (BDAP)
-    genericName: SInC
     longDescription: >
-      Il sistema consente il consolidamento dei Bilanci 
-      dell’Ente capogruppo con partecipate, 
-      controllate ed enti strumentali dal caricamento 
-      dei dati di bilancio e delle partite infragruppo 
-      da file esterni (fogli elettronici strutturati). 
-      Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice 
+      Il sistema consente il consolidamento dei Bilanci
+      dell’Ente capogruppo con partecipate,
+      controllate ed enti strumentali dal caricamento
+      dei dati di bilancio e delle partite infragruppo
+      da file esterni (fogli elettronici strutturati).
+      Il sistema è rilasciato in ambiente Web. Ed è utilizzabile con il semplice
       utilizzo di un browser (compatibile con tutti i più diffusi browser).
       Il Sistema può essere configurato per l'accesso di ogni singolo componente
       del GAP che sara' abilitato ad inserire:
@@ -45,22 +44,24 @@ description:
       - dati infragruppo
       - documentazione
       Ciascun componente potrà verificare le proprie partita infragruppo
-      con quelle risultanti dagli altri componenti interessati. 
+      con quelle risultanti dagli altri componenti interessati.
       Sono presenti tutte le funzionalità per gestire in automatico:
       - le scritture di rettifica pre consolidamento
-      - la determinazione delle Quote di Pertinenza di Terzi 
+      - la determinazione delle Quote di Pertinenza di Terzi
       - la rilevazione delle Differenze di Consolidamento.
       Il Sistema genera in automatico le seguenti tipoligie di bilancio:
       - Aggregato
       - Aggregato Rettificato
       - Aggregato, Rettificato e Nettizzato
       - Consolidato finale
-      Viene generato in automatico anche il file con estensione xbrl per l'invio 
+      Viene generato in automatico anche il file con estensione xbrl per l'invio
       alla Banca Dati Amministrazioni Pubbliche (BDAP)
     shortDescription: >-
-     E' un sistema per la gestione del processo 
-     di Consolidamento dei Bilanci 
+     E' un sistema per la gestione del processo
+     di Consolidamento dei Bilanci
      realizzato dalla Cooperativa EDP La Traccia per la Regione Basilicata.
+    documentation: >-
+       https://latraccia.it/sinc/
 developmentStatus: stable
 intendedAudience:
   scope:
@@ -96,7 +97,7 @@ maintenance:
     - name: Cooperativa EDP La Traccia
       until: '2024-10-10'
   type: contract
-name: Sistema Informatico di Consolidamento 
+name: Sistema Informatico di Consolidamento
 platforms:
   - web
 releaseDate: '2017-01-01'

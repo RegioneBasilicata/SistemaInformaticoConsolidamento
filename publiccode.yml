@@ -61,7 +61,7 @@ description:
      di Consolidamento dei Bilanci
      realizzato dalla Cooperativa EDP La Traccia per la Regione Basilicata.
     documentation: >-
-       https://latraccia.it/sinc
+       https://latraccia.it/area-suite-pa/
 developmentStatus: stable
 intendedAudience:
   scope:
@@ -106,3 +106,4 @@ softwareVersion: '1.0'
 url: 'https://github.com/RegioneBasilicata/SistemaInformaticoConsolidamento'
 usedBy:
   - Regione Basilicata
+  - Consiglio regionale della Calabria

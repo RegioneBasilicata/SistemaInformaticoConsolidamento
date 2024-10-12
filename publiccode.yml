@@ -61,8 +61,6 @@ description:
      E' un sistema per la gestione del processo
      di Consolidamento dei Bilanci
      realizzato dalla Cooperativa EDP La Traccia per la Regione Basilicata.
-    documentation: >-
-    http://latraccia.it/area-suite-pa/
 developmentStatus: stable
 intendedAudience:
   scope:

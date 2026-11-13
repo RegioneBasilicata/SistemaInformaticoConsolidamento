@@ -23079,7 +23079,7 @@ wwv_flow_imp_page.create_page(
  p_id=>1
 ,p_name=>'Home'
 ,p_alias=>'HOME'
-,p_step_title=>'SiNC'
+,p_step_title=>'SInC'
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
@@ -23087,8 +23087,8 @@ wwv_flow_imp_page.create_page(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(6868965508264471)
-,p_plug_name=>'SiNC'
-,p_title=>'Sistema Informativo Consolidamento Bilanci'
+,p_plug_name=>'SInC'
+,p_title=>'Sistema Informatico di Consolidamento'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(6637624839264346)
 ,p_plug_display_sequence=>10
